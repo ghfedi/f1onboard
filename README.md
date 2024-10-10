@@ -1,13 +1,8 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./dash/public/tag-logo.png" width="200">
-    <img alt="f1-dash" src="./dash/public/tag-logo.png" width="200">
-  </picture>
-</p>
+
 
 <h1 align="center">Real-time Formula 1 telemetry and timing</h1>
 
-## f1-dash
+## f1-Onboard
 
 A real-time F1 dashboard that shows the leader board, tires, gaps, laps, mini sectors and much more
 
@@ -17,7 +12,7 @@ I really appreciate it if you want to contribute to this project. I can recommen
 
 ## supporting
 
-If you want to support me and make me focus more on this project, support me here by [buying me a coffee](https://www.buymeacoffee.com/slowlydev).
+If you want to support me and make me focus more on this project, support me here by [buying me a coffee](https://www.buymeacoffee.com/fedighribi).
 
 ## notice
 
