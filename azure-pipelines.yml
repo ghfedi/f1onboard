@@ -20,18 +20,10 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - task: Docker@2
-      displayName: Build an image
+
+    - task: DockerCompose@1
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/dash/dockerfile'
-        tags: |
-          $(tag)
-    - task: AzureFunctionApp@2
-      inputs:
-        connectedServiceNameARM: 'Azure for Students(1)(885566de-33c8-4a90-9a2b-7f2c596083a2)'
-        appType: 'functionAppLinux'
-        appName: 'f1-onboard'
-        package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-        runtimeStack: 'NODE|20'
-        deploymentMethod: 'auto'
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: 'Azure for Students(1)(885566de-33c8-4a90-9a2b-7f2c596083a2)'
+        dockerComposeFile: '**/docker-compose.yaml'
+        action: 'Run a Docker Compose command'
