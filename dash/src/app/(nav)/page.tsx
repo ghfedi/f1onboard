@@ -24,7 +24,6 @@ export default function Home() {
 	return (
 		<div className="container mx-auto max-w-screen-lg px-4">
 			<section className="flex h-screen w-full flex-col items-center pt-20 sm:justify-center sm:pt-0">
-				<Image src={icon} alt="f1-dash tag logo" width={200} />
 
 				<h1 className="my-20 text-center text-5xl font-bold">
 					Real-time Formula 1 <br />
@@ -49,7 +48,7 @@ export default function Home() {
 			<section className="mb-10 flex w-full flex-col gap-2">
 				<h2 className="mb-4 text-2xl">What are our Features?</h2>
 
-				<div className="grid grid-flow-row  grid-cols-1 gap-2 sm:grid-cols-2">
+				<div className="grid grid-flow-row grid-cols-1 gap-2 sm:grid-cols-2">
 					{features.map((feature, i) => (
 						<FeatureCard key={`feature.${i}`} {...feature} />
 					))}
