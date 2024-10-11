@@ -20,7 +20,12 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-
+    - powershell: |
+        mkdir -f $(dockerComposePath)
+        # GitHub now requires TLS1.2. In PowerShell, run the following
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Start-BitsTransfer -Source "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-windows-x86_64.exe" -Destination $(dockerComposePath)\docker-compose.exe
+      displayName: Download docker-compose
     - task: DockerCompose@1
       inputs:
         containerregistrytype: 'Azure Container Registry'
