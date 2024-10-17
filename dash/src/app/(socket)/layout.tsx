@@ -20,6 +20,7 @@ import PlayControls from "@/components/PlayControls";
 import StreamStatus from "@/components/StreamStatus";
 import SegmentedControls from "@/components/SegmentedControls";
 import { SpeedPreferenceProvider, useSpeedPreference } from "@/context/SpeedPreferenceContext";
+import ThemeToggle from "../../../theme-toggle";
 
 type Props = {
 	children: ReactNode;
@@ -96,7 +97,7 @@ const SubLayout = ({ children }: Props) => {
 
 	return (
 		<div className="w-full">
-			<div className="grid grid-cols-1 items-center gap-4 border-b border-zinc-800 bg-black p-2 md:grid-cols-2">
+			<div className="grid grid-cols-1 items-center gap-4  p-2 md:grid-cols-2">
 				<Menubar />
 
 				<div className="flex items-center gap-2 sm:hidden">

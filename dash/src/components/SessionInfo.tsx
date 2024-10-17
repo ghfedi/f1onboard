@@ -45,7 +45,7 @@ export default function SessionInfo({ session, clock, timingData }: Props) {
 
 			<div className="flex flex-col justify-center">
 				{session ? (
-					<h1 className="truncate text-sm font-medium leading-none text-white">
+					<h1 className="truncate text-sm font-medium leading-none text-zinc-700">
 						{session.meeting.name}: {session.name ?? "Unknown"}
 						{timingData?.sessionPart ? ` ${sessionPartPrefix(session.name)}${timingData.sessionPart}` : ""}
 					</h1>

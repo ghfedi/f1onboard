@@ -2,13 +2,14 @@
 
 import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-
+import { Driver, RadioCapture } from "@/types/state.type";
 type Props = {
 	id?: string;
 	className?: string;
 	playing: boolean;
 	loading?: boolean;
 	onClick: () => void;
+
 };
 
 export default function PlayControls({ id, className, playing, loading = false, onClick }: Props) {
@@ -21,7 +22,8 @@ export default function PlayControls({ id, className, playing, loading = false, 
 	return (
 		<div
 			id={id}
-			className={clsx("flex h-8 w-8 cursor-pointer items-center justify-center", className)}
+			className={clsx("flex h-8 w-8 cursor-pointer items-center justify-center " , className)}
+
 			onClick={onClick}
 		>
 			<AnimatePresence>

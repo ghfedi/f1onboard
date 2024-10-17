@@ -36,7 +36,7 @@ export default function Home() {
 					</Link>
 
 					<Link href="/schedule">
-						<Button className="!rounded-xl border-2 border-zinc-700 !bg-transparent p-4 font-medium">
+						<Button className="!rounded-xl border-2 border-transparent  p-4 font-medium">
 							Check Schedule
 						</Button>
 					</Link>

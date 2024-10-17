@@ -14,12 +14,13 @@ import TeamRadios from "@/components/TeamRadios";
 import Footer from "@/components/Footer";
 import Map from "@/components/Map";
 import LapCount from "@/components/LapCount";
+import BattleMode from "@/components/BattleMode";
 
 export default function Page() {
 	const { state, positions, carsData } = useSocket();
 
 	return (
-		<div className="flex w-full flex-col">
+		<div className="flex w-full flex-col bg-gray-900 text-gray-100">
 			{/* md upwards, desktop ipad design */}
 			<div className="hidden flex-wrap items-center justify-between gap-2 overflow-hidden border-b border-zinc-800 p-2 px-2 md:flex">
 				<div className="flex flex-wrap items-center justify-between gap-2">
@@ -133,7 +134,14 @@ export default function Page() {
 			</div>
 
 			<div className="px-2">
-				<Footer />
+				<BattleMode
+					drivers={state?.driverList}
+					driversTiming={state?.timingData}
+					driversTimingStats={state?.timingStats}
+					driversAppTiming={state?.timingAppData}
+					carsData={carsData}
+				/>
+
 			</div>
 		</div>
 	);
