@@ -220,6 +220,8 @@
     align-items: center;
     gap: 10vh;
     padding: 0 10vh;
+    font-size: 3vh;
+    transform: skew(-10deg);
 }
 
 .gap .line {

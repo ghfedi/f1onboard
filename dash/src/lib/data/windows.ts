@@ -5,7 +5,6 @@ export type WindowKey =
 	| "tire-pace"
 	| "head-to-head"
 	| "track-limits"
-	| "battle-mode"
 	| "team-radios";
 
 export type Window = {
@@ -30,10 +29,10 @@ export const windows: Window[] = [
 		key: "track-limits",
 		label: "Track Limits Tracker",
 	},
-	{
-	 	key: "battle-mode",
-		label: "Battle Mode",
-	 },
+	// {
+	// 	key: "lap-series",
+	// 	label: "🚧 Lap Series",
+	// },
 	// {
 	// 	key: "tire-pace",
 	// 	label: "🚧 Tire Pace Comparison",

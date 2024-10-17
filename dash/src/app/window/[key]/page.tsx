@@ -9,7 +9,6 @@ import TrackViolations from "@/components/TrackViolations";
 import RaceControl from "@/components/RaceControl";
 import TeamRadios from "@/components/TeamRadios";
 import Map from "@/components/Map";
-import BattleMode from "@/components/BattleMode";
 
 type Props = {
 	params: {
@@ -67,15 +66,6 @@ export default function SubWindow({ params: { key } }: Props) {
 					drivers={state?.driverList}
 					driversTiming={state?.timingData}
 				/>
-			)}
-			{key === "battle-mode" && (
-			<BattleMode
-				drivers={state?.driverList}
-				driversTiming={state?.timingData}
-				driversTimingStats={state?.timingStats}
-				driversAppTiming={state?.timingAppData}
-				carsData={_carsData}
-			/>
 			)}
 		</div>
 	);
