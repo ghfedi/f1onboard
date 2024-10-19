@@ -26,7 +26,7 @@ jobs:
           yarn build
         env:
           NEXT_PUBLIC_LIVE_SOCKET_URL: 'http://live-backend.f1-dash.com'
-          NEXT_PUBLIC_API_KEY: 'http://live-backend.f1-dash.com'
+          NEXT_PUBLIC_API_URL: 'http://live-backend.f1-dash.com'
 
 
 
