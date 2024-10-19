@@ -16,8 +16,8 @@ jobs:
       uses: SpicyPizza/create-envfile@v2.0
       with:
         envkey_DEBUG: false
-        envkey_VARIABLE: ${{ vars.NEXT_PUBLIC_LIVE_SOCKET_URL }}
-        
+        NEXT_PUBLIC_LIVE_SOCKET_URL: ${{ vars.NEXT_PUBLIC_LIVE_SOCKET_URL }}
+        NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URLL }}
         file_name: .env
         fail_on_empty: false
         sort_keys: false
