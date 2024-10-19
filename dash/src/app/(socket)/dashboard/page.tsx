@@ -26,7 +26,7 @@ export default function Page() {
 	const fastestdriver = fastestLapDriver?.racingNumber !== undefined ? state?.driverList?.[fastestLapDriver.racingNumber] : undefined;
 
 	return (
-		<div className="flex w-full flex-col bg-gray-900 text-gray-100">
+		<div className="flex w-full flex-col bg-gray-950 text-gray-100">
 			{/* md upwards, desktop ipad design */}
 			<div
 				className="hidden flex-wrap items-center justify-between gap-2 overflow-hidden border-b border-zinc-800 p-2 px-2 md:flex">
@@ -42,7 +42,6 @@ export default function Page() {
 					<FastestLapOverlay
 						fastestLapDriver={fastestLapDriver}
 						latestRaceControlMessage={state?.raceControlMessages?.messages?.[0]}
-						message="CAR 43 (COL) LAP DELETED - TRACK LIMITS AT TURN 12 LAP 13 17:09:19 (PIT)"
 						fastestdriver={fastestdriver as Driver | undefined}
 					/>
 

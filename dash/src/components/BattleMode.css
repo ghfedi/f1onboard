@@ -38,7 +38,6 @@
 .driver-selection button {
     padding: 0.5rem 1rem;
     border: none;
-    background-color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }

@@ -67,7 +67,7 @@ export default function DriverBattle({	driver,
 
                 </div>
 
-                <DriverTag short={driver.tla} teamColor={driver.teamColour} position={position}/>
+                <DriverTag short={""} short2={driver.lastName} teamColor={driver.teamColour} position={position}/>
             </div>
 
             <div className="flex flex-col gap-2">

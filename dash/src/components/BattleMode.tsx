@@ -51,7 +51,7 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
                         onClick={() => toggleDriverSelection(driver.racingNumber)}
                         className={selectedDrivers.includes(driver.racingNumber) ? "selected" : ""}
                     >
-                        <DriverTag className="!min-w-full" short={driver.tla} teamColor={driver.teamColour}/>
+                        <DriverTag className="!min-w-full" short={driver.firstName} short2={driver.lastName} teamColor={driver.teamColour}/>
                     </button>
                 ))}
             </div>

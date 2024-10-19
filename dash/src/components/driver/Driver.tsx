@@ -69,11 +69,12 @@ export default function Driver({
 				className={clsx("grid items-center gap-2")}
 				style={{
 					gridTemplateColumns: uiElements.carMetrics
-						? "5.5rem 4rem 5.5rem 4rem 5rem 5.5rem auto auto"
-						: "5.5rem 4rem 5.5rem 4rem 5rem 5.5rem auto",
+						? "8.5rem 4rem 5.5rem 4rem 5rem 5.5rem auto auto"
+						: "8.5rem 4rem 5.5rem 4rem 5rem 5.5rem auto",background: `linear-gradient(to right, #${driver.teamColour}, transparent 5%) `
 				}}
 			>
-				<DriverTag className="!min-w-full" short={driver.tla} teamColor={driver.teamColour} position={position} />
+				<DriverTag className="!min-w-full " short2={driver.lastName} teamColor={driver.teamColour}
+						   position={position} short={""} />
 				<DriverDRS
 					on={carData ? hasDRS(carData[45]) : false}
 					possible={carData ? possibleDRS(carData[45]) : false}

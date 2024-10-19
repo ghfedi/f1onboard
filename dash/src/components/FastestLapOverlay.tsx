@@ -6,10 +6,9 @@ type Props = {
     fastestLapDriver: TimingStatsDriver | undefined;
     latestRaceControlMessage: Message | undefined;
     fastestdriver: Driver | undefined;
-    message :string
 };
 
-export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlMessage, fastestdriver,message }: Props) {
+export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlMessage, fastestdriver, }: Props) {
     const [overallFastestLap, setOverallFastestLap] = useState<TimingStatsDriver | undefined>(fastestLapDriver);
     const [displayedMessage, setDisplayedMessage] = useState<Message | undefined>(latestRaceControlMessage);
     const [showFastestLap, setShowFastestLap] = useState<boolean>(false);
@@ -34,7 +33,7 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
     return (
         <div className="   p-4 z-50">
             <AnimatePresence>
-                {showFastestLap && overallFastestLap && fastestdriver && (
+  {/*              {showFastestLap && overallFastestLap && fastestdriver && (
                     <motion.div
                         key="fastestLap"
                         initial={{ opacity: 0, y: -20 }}
@@ -47,7 +46,7 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
                     >
                         Fastest Lap- <span style={{ color: `#${fastestdriver.teamColour}` }}>{fastestdriver.lastName}</span> - {overallFastestLap.personalBestLapTime.value}
                     </motion.div>
-                )}
+                )}*/}
                 {displayedMessage && (
                     <motion.div
                         key="raceControl"
@@ -63,7 +62,7 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
                             Race Control
                         </div>
                            <span className={`text-blue-950 bg-white`}>
-                               {message}</span>
+                                {displayedMessage.message}</span>
                         </div>
                     </motion.div>
                 )}
