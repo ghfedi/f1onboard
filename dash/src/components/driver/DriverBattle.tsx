@@ -1,7 +1,6 @@
 "use client";
 
-import clsx from "clsx";
-import { motion } from "framer-motion";
+
 import { useMode } from "@/context/ModeContext";
 import '../BattleMode.css';
 
@@ -12,15 +11,13 @@ import {
     CarDataChannels,
     TimingStatsDriver,
 } from "@/types/state.type";
+import DriverSpeedometer from "./DriverSpeedometer";
 
 import DriverTag from "./DriverTag";
 import DriverDRS from "./DriverDRS";
-import DriverGap from "./DriverGap";
 import DriverTire from "./DriverTire";
-import DriverMiniSectors from "./DriverMiniSectors";
 import DriverLapTime from "./DriverLapTime";
-import DriverInfo from "./DriverInfo";
-import DriverCarMetrics from "./DriverCarMetrics";
+
 
 type Props = {
     position: number;
@@ -48,7 +45,6 @@ export default function DriverBattle({	driver,
                                    sessionPart,
                                    carData,}: Props) {
 
-    const { uiElements } = useMode();
     const newElement = document.createElement("div");
 
     newElement.id = `driver${driver}`;
@@ -70,14 +66,10 @@ export default function DriverBattle({	driver,
                     />
 
                 </div>
-                <DriverTag short={driver.tla} teamColor={driver.teamColour} position={position}/>
+
+                <DriverTag short={""} short2={driver.lastName} teamColor={driver.teamColour} position={position}/>
             </div>
-            {/*<div className="driver-name">
-                        <div className="first-name"><p id="first-name">{driver.firstName}</p></div>
-                        <div className="last-name"><p id="last-name" style={{color: `#${driver.teamColour}`}}>
-                            {driver.lastName}
-                        </p></div>
-                    </div>*/}
+
             <div className="flex flex-col gap-2">
                 <DriverDRS
                     on={carData ? hasDRS(carData[45]) : false}
@@ -90,8 +82,7 @@ export default function DriverBattle({	driver,
                                hasFastest={hasFastest}/>
 
             </div>
-
-            {uiElements.carMetrics && carData && <DriverCarMetrics carData={carData}/>}
+            <div>{carData && <DriverSpeedometer carData={carData}/>}</div>
         </div>
 
 
