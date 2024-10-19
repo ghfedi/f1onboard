@@ -17,9 +17,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-      - name: Copy .env file
+       - name: Show repo env secret
         run: |
-          cp .env dash/.env
+          echo ${{ secrets.REPO_ENV_SECRET }}
       - name: Install dependencies and build
         run: |
           cd dash
