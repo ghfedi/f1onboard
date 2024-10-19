@@ -23,6 +23,11 @@ jobs:
           cd dash
           yarn install --frozen-lockfile
           yarn build
+      
+
+      - name: Copy .env file
+        run: |
+          cp .env dash/.env
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
