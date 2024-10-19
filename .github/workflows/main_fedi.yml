@@ -24,17 +24,15 @@ jobs:
           cd dash
           yarn install --frozen-lockfile
           yarn build
+          mv ./build/static ./build/standalone/build
+          mv ./public ./build/standalone
         env:
           NEXT_PUBLIC_LIVE_SOCKET_URL: 'http://live-backend.f1-dash.com'
           NEXT_PUBLIC_API_URL: 'http://live-backend.f1-dash.com'
 
 
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: node-app
-          path: dash
+
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,10 +44,7 @@ jobs:
       id-token: write
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: node-app
+
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -64,4 +59,4 @@ jobs:
         with:
           app-name: 'fedi'
           slot-name: 'Production'
-          package: .
+          package: ./build/standalone
