@@ -55,7 +55,15 @@
 
 
 }
-
+.driver-selected {
+    position: relative;
+    top: calc(-40% - 3.5vh);
+    height: calc(140% + 3.5vh);
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    align-items: center;
+    gap: 1rem;
+}
 .driver-info {
     position: relative;
     top: calc(-40% - 3.5vh);
@@ -213,7 +221,12 @@
     height: 100%;
     transition: all 0.2s ease;
 }
-
+.gap-info {
+    font-size: 1.5rem;
+    color: #ff0000; /* Example color */
+    margin-top: 1rem;
+    text-align: center;
+}
 .gap {
     width: 100%;
     display: flex;

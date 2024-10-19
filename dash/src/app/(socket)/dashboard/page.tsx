@@ -11,47 +11,65 @@ import LeaderBoard from "@/components/LeaderBoard";
 import Qualifying from "@/components/Qualifying";
 import RaceControl from "@/components/RaceControl";
 import TeamRadios from "@/components/TeamRadios";
-import Footer from "@/components/Footer";
 import Map from "@/components/Map";
 import LapCount from "@/components/LapCount";
 import BattleMode from "@/components/BattleMode";
+import FastestLapOverlay from "@/components/FastestLapOverlay";
+import { DriverList, TimingData, TimingStats, TimingAppData, CarsData, Driver } from "@/types/state.type";
 
 export default function Page() {
 	const { state, positions, carsData } = useSocket();
+	const driversTimingStats: TimingStats | undefined = state?.timingStats;
+	const fastestLapDriver = Object.values(driversTimingStats?.lines || {}).find(
+		(driver) => driver.personalBestLapTime.position === 1
+	);
+	const fastestdriver = fastestLapDriver?.racingNumber !== undefined ? state?.driverList?.[fastestLapDriver.racingNumber] : undefined;
 
 	return (
 		<div className="flex w-full flex-col bg-gray-900 text-gray-100">
 			{/* md upwards, desktop ipad design */}
-			<div className="hidden flex-wrap items-center justify-between gap-2 overflow-hidden border-b border-zinc-800 p-2 px-2 md:flex">
+			<div
+				className="hidden flex-wrap items-center justify-between gap-2 overflow-hidden border-b border-zinc-800 p-2 px-2 md:flex">
 				<div className="flex flex-wrap items-center justify-between gap-2">
 					<div className="flex w-full items-center justify-between md:w-auto">
-						<SessionInfo session={state?.sessionInfo} clock={state?.extrapolatedClock} timingData={state?.timingData} />
+						<SessionInfo session={state?.sessionInfo} clock={state?.extrapolatedClock}
+									 timingData={state?.timingData}/>
 					</div>
 
-					<WeatherInfo weather={state?.weatherData} />
+					<WeatherInfo weather={state?.weatherData}/>
 				</div>
+				<div className="flex w-full items-center justify-between md:w-auto">
+					<FastestLapOverlay
+						fastestLapDriver={fastestLapDriver}
+						latestRaceControlMessage={state?.raceControlMessages?.messages?.[0]}
+						message="CAR 43 (COL) LAP DELETED - TRACK LIMITS AT TURN 12 LAP 13 17:09:19 (PIT)"
+						fastestdriver={fastestdriver as Driver | undefined}
+					/>
 
-				<TrackInfo track={state?.trackStatus} lapCount={state?.lapCount} />
+				</div>
+				<TrackInfo track={state?.trackStatus} lapCount={state?.lapCount}/>
 			</div>
 
 			{/* sm, mobile design */}
 			<div className="flex w-full flex-col divide-y divide-zinc-800 border-b border-zinc-800 md:hidden">
 				<div className="p-2">
-					<SessionInfo session={state?.sessionInfo} clock={state?.extrapolatedClock} timingData={state?.timingData} />
+					<SessionInfo session={state?.sessionInfo} clock={state?.extrapolatedClock}
+								 timingData={state?.timingData}/>
 				</div>
 
 				<div className="p-2">
-					<WeatherInfo weather={state?.weatherData} />
+					<WeatherInfo weather={state?.weatherData}/>
 				</div>
 
 				<div className="flex justify-between overflow-hidden p-4">
-					<TrackInfo track={state?.trackStatus} lapCount={state?.lapCount} />
-					<LapCount lapCount={state?.lapCount} />
+					<TrackInfo track={state?.trackStatus} lapCount={state?.lapCount}/>
+					<LapCount lapCount={state?.lapCount}/>
 				</div>
 			</div>
 
 			<div className={clsx("flex w-full flex-col divide-y divide-zinc-800")}>
-				<div className={clsx("flex w-full flex-col divide-y divide-zinc-800", "xl:flex-row xl:divide-x xl:divide-y-0")}>
+				<div
+					className={clsx("flex w-full flex-col divide-y divide-zinc-800", "xl:flex-row xl:divide-x xl:divide-y-0")}>
 					<div className={clsx("mb-2 overflow-x-auto md:overflow-visible", "xl:flex-[0,0,auto]")}>
 						<LeaderBoard
 							drivers={state?.driverList}
@@ -100,7 +118,8 @@ export default function Page() {
 									"2xl:w-1/2",
 								)}
 							>
-								<RaceControl messages={state?.raceControlMessages} utcOffset={state?.sessionInfo?.gmtOffset ?? ""} />
+								<RaceControl messages={state?.raceControlMessages}
+											 utcOffset={state?.sessionInfo?.gmtOffset ?? ""}/>
 							</div>
 
 							<div
@@ -143,6 +162,7 @@ export default function Page() {
 				/>
 
 			</div>
+
 		</div>
 	);
 }

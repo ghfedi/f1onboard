@@ -1,7 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@font-face {
+	font-family: 'Formula1-Bold';
+	src: url('../app/fonts/Formula1-Bold_web_0.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
 .pulse-loading-spinner {
 	animation: pulse-loading 1.2s cubic-bezier(0.52, 0.6, 0.25, 0.99) infinite;
 }
