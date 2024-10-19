@@ -24,7 +24,7 @@ ENV BUILD_STANDALONE=1
 
 COPY . .
 
-RUN yarn build --frozen-lockfile
+CMD ["yarn", "build"]
 FROM node:20-alpine AS runtime
 
 WORKDIR /app
