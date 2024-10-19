@@ -25,7 +25,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn build
         env:
-          NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_LIVE_SOCKET_URL: ${{ vars.NEXT_PUBLIC_LIVE_SOCKET_URL }}
           NEXT_PUBLIC_API_KEY: ${{ vars.NEXT_PUBLIC_API_KEY }}
 
 
