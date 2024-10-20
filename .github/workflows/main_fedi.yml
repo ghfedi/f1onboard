@@ -16,17 +16,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Log in to Azure Container Registry
-        uses: azure/docker-login@v1
-        with:
-          login-server: f1onboard.azurecr.io
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Build and push Docker image
-        run: |
-          docker build -t f1onboard.azurecr.io/fedi:latest -f dash/dockerfile .
-          docker push f1onboard.azurecr.io/fedi:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -43,4 +33,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'fedi'
-          images: 'f1onboard.azurecr.io/fedi:latest'
+          images: 'fedigh/fedi:latest'
