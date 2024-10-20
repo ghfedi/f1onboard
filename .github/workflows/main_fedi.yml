@@ -22,15 +22,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: 'Login to Azure'
-        uses: azure/login@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5562DFA6F4464920AFF11BDBF63444DD }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E2BEA7C6492C4C5B82AF25AB5F95D1FF }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3F2BF1E68EFB4902901FDE631360B083 }}
-
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'fedi'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3F2BF1E68EFB4902901FDE631360B083 }}
           images: 'fedigh/fedi:latest'
