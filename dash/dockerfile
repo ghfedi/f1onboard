@@ -5,7 +5,7 @@ COPY package*.json ./
 COPY yarn.lock ./
 
 RUN apk add --no-cache make gcc g++ python3 && yarn install --frozen-lockfile
-
+RUN apk add --no-cache musl-dev pkgconfig openssl libressl-dev
 FROM base as builder
 
 ARG NODE_ENV
