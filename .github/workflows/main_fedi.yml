@@ -43,4 +43,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'fedi'
-          images: '<your-acr-name>.azurecr.io/fedi:latest'
+          images: 'f1onboard.azurecr.io/fedi:latest'
