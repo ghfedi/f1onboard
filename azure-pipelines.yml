@@ -33,7 +33,7 @@ stages:
         containerregistrytype: 'Azure Container Registry'
         azureSubscription: 'Azure for Students(6)(885566de-33c8-4a90-9a2b-7f2c596083a2)'
         azureContainerRegistry: '{"loginServer":"f1onboard.azurecr.io", "id" : "/subscriptions/885566de-33c8-4a90-9a2b-7f2c596083a2/resourceGroups/tekup.ghribi.fedi_rg_1820/providers/Microsoft.ContainerRegistry/registries/f1onboard"}'
-        dockerComposeFile: '**/docker-compose.yml'
+        dockerComposeFile: '**/docker-compose.yaml'
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'run'
 
