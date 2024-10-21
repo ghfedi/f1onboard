@@ -20,6 +20,8 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          mv package.json ./
+          mv yarn.lock ./
           yarn install
           yarn run build
           mv ./build/static ./build/standalone/build
