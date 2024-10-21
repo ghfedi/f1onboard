@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/f1-dash.iml" filepath="$PROJECT_DIR$/.idea/f1-dash.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/f1onboard.iml" filepath="$PROJECT_DIR$/.idea/f1onboard.iml" />
     </modules>
   </component>
 </project>
