@@ -20,9 +20,10 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          
-          yarn install
-          yarn next build
+          apk add --no-cache make gcc g++ python3
+          apk add --no-cache musl-dev pkgconfig openssl libressl-dev
+          yarn install --frozen-lockfile
+          yarn build
           mv ./build/static ./build/standalone/build
           mv ./public ./build/standalone
 
