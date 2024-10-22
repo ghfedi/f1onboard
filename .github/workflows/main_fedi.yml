@@ -8,6 +8,8 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: f1onboard
+  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+  NEXT_PUBLIC_LIVE_SOCKET_URL: ${{ secrets.NEXT_PUBLIC_LIVE_SOCKET_URL }}
 
 jobs:
   create-envfile:
