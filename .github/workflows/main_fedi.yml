@@ -37,5 +37,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secret.AZUREAPPSERVICE_PUBLISHPROFILE_3F2BF1E68EFB4902901FDE631360B083 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3F2BF1E68EFB4902901FDE631360B083 }}
           images: "fedigh/fedi:latest"
