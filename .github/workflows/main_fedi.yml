@@ -1,4 +1,4 @@
-name: App Service Code
+name: App Service Docker
 
 on:
   push:
@@ -7,57 +7,21 @@ on:
   workflow_dispatch:
 
 env:
+  
   AZURE_WEBAPP_NAME: f1onboard
-  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-  NEXT_PUBLIC_LIVE_SOCKET_URL: ${{ secrets.NEXT_PUBLIC_LIVE_SOCKET_URL }}
 
 jobs:
-  create-envfile:
- 
-    runs-on: ubuntu-latest
- 
-    steps:
-    - name: Make envfile
-      uses: SpicyPizza/create-envfile@v2.0
-      with:
-        envkey_DEBUG: false
-        envkey_NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-        envkey_NEXT_PUBLIC_LIVE_SOCKET_URL: ${{ secrets.NEXT_PUBLIC_LIVE_SOCKET_URL }}
-        
-        
-        
-        file_name: .env
-        fail_on_empty: false
-        sort_keys: false
   build:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "yarn"
-
-      - name: yarn install and build
-        run: |
-          cd dash
-          yarn install --frozen-lockfile
-          yarn build
-          ls
-
-      - name: Copy static files
-        run: |
-          cp -R public ./.next/standalone/public
-          cp -R .next/static ./.next/standalone/.next/static
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: app
-          path: .next/standalone
+     
 
   deploy:
     runs-on: ubuntu-latest
@@ -68,16 +32,10 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: app
-
-      - name: "Deploy to Azure Web App"
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          slot-name: "Production"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3F2BF1E68EFB4902901FDE631360B083 }}
-          package: .
+          publish-profile: ${{ secrets.PUBLISH_PROFILE_DOCKER }}
+          images: "fedigh/fedi:latest"
