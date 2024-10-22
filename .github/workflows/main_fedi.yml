@@ -46,6 +46,7 @@ jobs:
           cd dash
           yarn install --frozen-lockfile
           yarn build
+          ls
 
       - name: Copy static files
         run: |
