@@ -10,6 +10,24 @@ env:
   AZURE_WEBAPP_NAME: f1onboard
 
 jobs:
+  create-envfile:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - name: Make envfile
+      uses: SpicyPizza/create-envfile@v2.0
+      with:
+        envkey_DEBUG: false
+        envkey_SOME_API_KEY: "123456abcdef"
+        envkey_NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+        envkey_NEXT_PUBLIC_LIVE_SOCKET_URL: ${{ secrets.NEXT_PUBLIC_LIVE_SOCKET_URL }}
+        
+        
+        
+        file_name: .env
+        fail_on_empty: false
+        sort_keys: false
   build:
     runs-on: ubuntu-latest
 
