@@ -21,7 +21,6 @@ jobs:
       uses: SpicyPizza/create-envfile@v2.0
       with:
         envkey_DEBUG: false
-        envkey_SOME_API_KEY: "123456abcdef"
         envkey_NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
         envkey_NEXT_PUBLIC_LIVE_SOCKET_URL: ${{ secrets.NEXT_PUBLIC_LIVE_SOCKET_URL }}
         
@@ -50,8 +49,8 @@ jobs:
 
       - name: Copy static files
         run: |
-          cp -R ./public ./.next/standalone/public
-          cp -R ./.next/static ./.next/standalone/.next/static
+          cp -R /public ./.next/standalone/public
+          cp -R /.next/static ./.next/standalone/.next/static
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
