@@ -1,10 +1,13 @@
-name: Build and deploy Node.js app to Azure Web App - fedi
+name: App Service Code
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: f1onboard
 
 jobs:
   build:
@@ -13,28 +16,47 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js version
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: 20
+          cache: "yarn"
 
-      - name: npm install, build, and test
+      - name: yarn install and build
         run: |
-          apk add --no-cache make gcc g++ python3
-          apk add --no-cache musl-dev pkgconfig openssl libressl-dev
           yarn install --frozen-lockfile
           yarn build
-          mv ./build/static ./build/standalone/build
-          mv ./public ./build/standalone
+
+      - name: Copy static files
+        run: |
+          cp -R ./public ./.next/standalone/public
+          cp -R ./.next/static ./.next/standalone/.next/static
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: app
+          path: ./.next/standalone
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    steps:
 
-      - name: 'Deploy to Azure Web App'
+    environment:
+      name: production
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: app
+
+      - name: "Deploy to Azure Web App"
+        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'fedi'
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3F2BF1E68EFB4902901FDE631360B083 }}
-          package: './build/standalone'
+          package: .
