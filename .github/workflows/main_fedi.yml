@@ -24,6 +24,7 @@ jobs:
 
       - name: yarn install and build
         run: |
+          cd dash
           yarn install --frozen-lockfile
           yarn build
 
