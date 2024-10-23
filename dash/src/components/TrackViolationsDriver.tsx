@@ -6,7 +6,7 @@ import { calculatePosition } from "@/lib/calculatePosition";
 
 import DriverTag from "@/components/driver/DriverTag";
 
-import octagonX from "public/icons/x-octagon.svg";
+import octagonX from "@/app/fonts/icons/x-octagon.svg";
 
 type Props = {
 	driver: Driver;

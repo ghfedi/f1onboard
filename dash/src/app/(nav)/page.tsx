@@ -9,7 +9,7 @@ import ScrollHint from "@/components/landing/ScrollHint";
 
 import { features } from "@/lib/data/features";
 
-import icon from "public/tag-logo.svg";
+import icon from "@/app/fonts/tag-logo.svg";
 
 const roadmap = [
 	"Favorite Driver Highlighting & Filtering",

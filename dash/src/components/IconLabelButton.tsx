@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import githubIcon from "public/icons/github.svg";
-import coffeeIcon from "public/icons/bmc-logo.svg";
+import githubIcon from "@/app/fonts/icons/github.svg";
+import coffeeIcon from "@/app/fonts/icons/bmc-logo.svg";
 
 type Props = {
 	icon: "github" | "bmc";

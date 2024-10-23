@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import downIcon from "public/icons/chevron-down.svg";
+import downIcon from "@/app/fonts/icons/chevron-down.svg";
 
 export default function ScrollHint() {
 	return (

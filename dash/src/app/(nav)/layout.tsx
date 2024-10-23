@@ -14,11 +14,11 @@ export default function Layout({ children }: Props) {
 				<Menubar />
 
 				<div className="hidden items-center gap-4 pr-2 sm:flex">
-					<IconLabelButton icon="bmc" href="https://www.buymeacoffee.com/slowlydev">
+					<IconLabelButton icon="bmc" href="https://buymeacoffee.com/fedighribi">
 						Coffee
 					</IconLabelButton>
 
-					<IconLabelButton icon="github" href="https://github.com/slowlydev/f1-dash">
+					<IconLabelButton icon="github" href="https://github.com/ghfedi/">
 						GitHub
 					</IconLabelButton>
 				</div>

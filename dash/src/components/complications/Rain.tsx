@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import rainIcon from "public/icons/cloud.heavyrain.svg";
-import noRainIcon from "public/icons/cloud.rain.svg";
+import rainIcon from "@/app/fonts/icons/cloud.heavyrain.svg";
+import noRainIcon from "@/app/fonts/icons/cloud.rain.svg";
 
 type Props = {
 	rain: boolean;

@@ -4,7 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import { type ReactNode } from "react";
 import Image from "next/image";
 
-import infoIcon from "public/icons/info.svg";
+import infoIcon from "@/app/fonts/icons/info.svg";
 
 type Props = {
 	children: ReactNode;

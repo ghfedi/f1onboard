@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import Gauge from "./Gauge";
 
-import humidityIcon from "public/icons/humidity.svg";
+import humidityIcon from "@/app/fonts/icons/humidity.svg";
 
 type Props = {
 	value: number;

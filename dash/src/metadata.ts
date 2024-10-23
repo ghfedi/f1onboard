@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 
-const title = "f1-dash | Formula 1 live timing";
+const title = "f1-onboard | Formula 1 live timing";
 const description =
 	"Experience live telemetry and timing data from Formula 1 races. Get insights into leaderboards, tire choices, gaps, lap times, sector times, team radios, and more.";
 
-const url = "https://f1-dash.com";
+const url = "https://f1onboard.azurewebsites.net/";
 
 export const metadata: Metadata = {
 	generator: "Next.js",
@@ -31,10 +31,10 @@ export const metadata: Metadata = {
 	},
 
 	twitter: {
-		site: "@Slowlydev",
+		site: "@FadiGhribi",
 		title,
 		description,
-		creator: "@Slowlydev",
+		creator: "@FadiGhribi",
 		card: "summary_large_image",
 		images: [
 			{
@@ -52,13 +52,13 @@ export const metadata: Metadata = {
 
 	keywords: ["Formula 1", "f1 dashboard", "realtime telemetry", "f1 timing", "live updates"],
 
-	creator: "Slowlydev",
-	publisher: "Slowlydev",
-	authors: [{ name: "Slowlydev", url: "https://slowly.dev" }],
+	creator: "FediGhribi",
+	publisher: "FediGhribi",
+	authors: [{ name: "FediGhribi" }],
 
 	appleWebApp: {
 		capable: true,
-		title: "f1-dash",
+		title: "f1-onboard",
 		statusBarStyle: "black-translucent",
 	},
 
@@ -76,9 +76,7 @@ export const metadata: Metadata = {
 		canonical: url,
 	},
 
-	verification: {
-		google: "hKv0h7XtWgQ-pVNVKpwwb2wcCC2f0tBQ1X1IcDX50hg",
-	},
+
 
 	manifest: "/manifest.json",
 };
