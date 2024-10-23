@@ -9,7 +9,7 @@ import Modal from "@/components/Modal";
 import Button from "@/components/Button";
 import Windows from "@/components/Windows";
 
-import alertIcon from "@/app/fonts/icons/alert-triangle.svg";
+import alertIcon from "public/icons/alert-triangle.svg";
 import ConnectionStatus from "./ConnectionStatus";
 
 export default function Menubar() {

@@ -8,11 +8,11 @@ import DriverTire from "@/components/driver/DriverTire";
 import DriverDRS from "@/components/driver/DriverDRS";
 import DriverGap from "@/components/driver/DriverGap";
 
-import softTireIcon from "@/app/fonts/tires/soft.svg";
-import mediumTireIcon from "@/app/fonts/tires/medium.svg";
-import hardTireIcon from "@/app/fonts/tires/hard.svg";
-import intermediateTireIcon from "@/app/fonts/tires/intermediate.svg";
-import wetTireIcon from "@/app/fonts/tires/wet.svg";
+import softTireIcon from "public/tires/soft.svg";
+import mediumTireIcon from "public/tires/medium.svg";
+import hardTireIcon from "public/tires/hard.svg";
+import intermediateTireIcon from "public/tires/intermediate.svg";
+import wetTireIcon from "public/tires/wet.svg";
 
 import { appTimingDriver, driver, timingDriver, timingStatsDriver } from "./exampleDriverData";
 

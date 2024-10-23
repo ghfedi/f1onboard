@@ -2,7 +2,7 @@ import { type ReactNode } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 
-import infoIcon from "@/app/fonts/icons/info.svg";
+import infoIcon from "public/icons/info.svg";
 
 type Props = {
 	className?: string;

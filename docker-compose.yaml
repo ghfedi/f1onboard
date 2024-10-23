@@ -8,7 +8,7 @@ services:
       - 4000:4000
     environment:
       - LIVE_BACKEND_ADDRESS=0.0.0.0:4000
-      - ORIGIN=http://localhost:3000
+      - ORIGIN=https://f1onboard.azurewebsites.net
       - RUST_LOG=live=trace
 
   api:
@@ -27,8 +27,8 @@ services:
 
       context: ./dash/
       args:
-        - NEXT_PUBLIC_LIVE_SOCKET_URL=https://live-backend.f1-dash.com
-        - NEXT_PUBLIC_API_URL=https://live-backend.f1-dash.com
+        - NEXT_PUBLIC_LIVE_SOCKET_URL=https://live.whitesky-f52affcd.westeurope.azurecontainerapps.io/
+        - NEXT_PUBLIC_API_URL=https://live.whitesky-f52affcd.westeurope.azurecontainerapps.io/
         - TAG=latest
 
 
