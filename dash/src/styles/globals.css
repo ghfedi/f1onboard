@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-	font-family: 'Formula1-Bold';
-	src: url('../app/fonts/Formula1-Bold_web_0.ttf') format('truetype');
+	font-family: "Formula1-Bold";
+	src: url("../app/fonts/Formula1-Bold_web_0.ttf") format("truetype");
 	font-weight: bold;
 	font-style: normal;
 }

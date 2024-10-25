@@ -76,7 +76,5 @@ export const metadata: Metadata = {
 		canonical: url,
 	},
 
-
-
 	manifest: "/manifest.json",
 };

@@ -12,12 +12,9 @@ export { metadata } from "@/metadata";
 export { viewport } from "@/viewport";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-
 	return (
 		<html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} bg-zinc-950 font-sans text-white`}>
 			<head />
-
-
 
 			<body>{children}</body>
 		</html>

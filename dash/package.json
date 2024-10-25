@@ -10,8 +10,7 @@
 		"dev": "next dev",
 		"lint": "next lint",
 		"start": "next start",
-		"prettier": "prettier --write src",
-		"electron": "wait-on http://localhost:3000 && electron ."
+		"prettier": "prettier --write src"
 	},
 	"dependencies": {
 		"@headlessui/react": "2.0.3",
