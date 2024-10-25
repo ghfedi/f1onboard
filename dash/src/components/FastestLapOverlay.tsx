@@ -31,9 +31,9 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
     }, [latestRaceControlMessage]);
 
     return (
-        <div className="   p-4 z-50">
+        <div className="   p-0 z-50">
             <AnimatePresence>
-  {/*              {showFastestLap && overallFastestLap && fastestdriver && (
+         {/* {showFastestLap && overallFastestLap && fastestdriver && (
                     <motion.div
                         key="fastestLap"
                         initial={{ opacity: 0, y: -20 }}
@@ -42,7 +42,7 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
                         transition={{ duration: 0.5 }}
                         style={{ backgroundImage: `url('https://cdn.animaapp.com/projects/671282d572d2d77050fbb37d/releases/6712864285c7960cfebf0bbc/img/bg-1.svg')`, backgroundSize: 'cover' }}
 
-                        className="font-formula1 text-2xl  p-2 mb-2"
+                        className="font-formula1 text-2xl  p-2 mb-2 rounded"
                     >
                         Fastest Lap- <span style={{ color: `#${fastestdriver.teamColour}` }}>{fastestdriver.lastName}</span> - {overallFastestLap.personalBestLapTime.value}
                     </motion.div>
@@ -54,14 +54,14 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.5 }}
-                        className=" font-formula1 text-blue-950 p-2 "
+                        className=" font-formula1 text-blue-950 px-2 "
                     >
-                        <div className={`flex items-center justify-between bg-blue-950`}>
-                            <img src="https://cdn.animaapp.com/projects/671282d572d2d77050fbb37d/releases/6712864285c7960cfebf0bbc/img/fia-logo.png" alt="FIA Logo" className="w-12 h-12 p-2" />
+                        <div className={`flex items-center justify-between bg-blue-950 px-1.5 rounded-xl`}>
+                            <img src="https://cdn.animaapp.com/projects/671282d572d2d77050fbb37d/releases/6712864285c7960cfebf0bbc/img/fia-logo.png" alt="FIA Logo" className="w-12 h-12 p-1" />
                         <div style={{ backgroundImage: `url('')`, backgroundSize: 'cover' }} className="text-white pr-2">
                             Race Control
                         </div>
-                           <span className={`text-blue-950 bg-white`}>
+                           <span className={`text-blue-950 bg-white px-2 rounded-xl`}>
                                 {displayedMessage.message}</span>
                         </div>
                     </motion.div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { DriverList, TimingData, TimingStats, TimingAppData, CarsData } from "@/types/state.type";
 import DriverTag from "@/components/driver/DriverTag";
 import DriverBattle from "@/components/driver/DriverBattle";
+import DriverLapTimesComparison from "@/components/DriverLapTimesComparison";
 
 type Props = {
     drivers: DriverList | undefined;
@@ -13,7 +14,7 @@ type Props = {
 
 const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTiming, carsData }: Props) => {
     const [selectedDrivers, setSelectedDrivers] = useState<string[]>([]);
-    const [maxDrivers, setMaxDrivers] = useState<number>(3);
+    const [maxDrivers, setMaxDrivers] = useState<number>(2);
 
     const toggleDriverSelection = (racingNumber: string) => {
         setSelectedDrivers((prev) =>
@@ -51,7 +52,7 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
                         onClick={() => toggleDriverSelection(driver.racingNumber)}
                         className={selectedDrivers.includes(driver.racingNumber) ? "selected" : ""}
                     >
-                        <DriverTag className="!min-w-full" short={driver.firstName} short2={driver.lastName} teamColor={driver.teamColour}/>
+                        <DriverTag className="!min-w-full" short="" short2={driver.lastName} teamColor={driver.teamColour}/>
                     </button>
                 ))}
             </div>
@@ -63,26 +64,29 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
                     const timingStatsDriver = driversTimingStats!.lines[racingNumber];
                     const carData = carsData ? carsData[racingNumber]?.Channels : undefined;
 
+
                     return (
-                        <DriverBattle
-                            key={racingNumber}
-                            driver={drivers![racingNumber]}
-                            timingDriver={timingDriver}
-                            appTimingDriver={appTimingDriver}
-                            timingStatsDriver={timingStatsDriver}
-                            carData={carData}
-                            position={parseInt(driversTiming!.lines[racingNumber].position, 10)}
-                            sessionPart={driversTiming!.sessionPart}/>
-
-
+                        <div key={racingNumber}>
+                            <DriverBattle
+                                driver={drivers![racingNumber]}
+                                timingDriver={timingDriver}
+                                appTimingDriver={appTimingDriver}
+                                timingStatsDriver={timingStatsDriver}
+                                carData={carData}
+                                position={parseInt(driversTiming!.lines[racingNumber].position, 10)}
+                                sessionPart={driversTiming!.sessionPart}
+                            />
+                            {/*<DriverLapTimesComparison driver={timingDriver} />*/}
+                        </div>
                     );
                 })}
-                {selectedDrivers.length === 2 && (
+{/*                {selectedDrivers.length === 2 && (
                     <div className="gap-info">
                         Gap: {calculateGap(selectedDrivers[0], selectedDrivers[1])} seconds
                     </div>
-                )}
+                )}*/}
             </div>
+
         </div>
     );
 };
