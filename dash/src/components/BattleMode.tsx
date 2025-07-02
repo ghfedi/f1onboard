@@ -75,7 +75,7 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 								position={parseInt(driversTiming!.lines[racingNumber].position, 10)}
 								sessionPart={driversTiming!.sessionPart}
 							/>
-							{/*<DriverLapTimesComparison driver={timingDriver} />*/}
+
 						</div>
 					);
 				})}

@@ -4,20 +4,14 @@ export default function Footer() {
 	return (
 		<footer className="my-8 text-sm text-zinc-600">
 			<div className="mb-4 flex flex-wrap gap-2">
+				<p>Made with ♥ by Fedi.</p>
+
 				<p>
-					Made with ♥ by <TextLink website="https://slowly.dev">Slowly</TextLink>.
+					<TextLink website="https://www.buymeacoffee.com/fedighribi">Buy me a coffee</TextLink> to support me.
 				</p>
 
 				<p>
-					<TextLink website="https://www.buymeacoffee.com/slowlydev">Buy me a coffee</TextLink> to support me.
-				</p>
-
-				<p>
-					Contribute on <TextLink website="https://github.com/slowlydev/f1-dash">GitHub</TextLink>.
-				</p>
-
-				<p>
-					Checkout the Community <TextLink website="https://discord.gg/unJwu66NuB">Discord</TextLink>.
+					Contribute on <TextLink website="https://github.com/ghfedi/">GitHub</TextLink>.
 				</p>
 
 				<p>

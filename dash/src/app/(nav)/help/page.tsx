@@ -18,12 +18,12 @@ export default function HelpPage() {
 		<div className="container mx-auto mb-10 max-w-screen-lg px-4">
 			<h1 className="my-4 text-3xl">Help Page</h1>
 
-			<p>This page explains some core features and UI elements of f1-dash.</p>
+			<p>This page explains some core features and UI elements of f1-onboard .</p>
 
 			<h2 className="my-4 text-2xl">Colors</h2>
 
 			<p>
-				A core element in the UI of f1-dash and formula 1 are the different colors used for lap times, sector times,
+				A core element in the UI of f1-onboard and formula 1 are the different colors used for lap times, sector times,
 				mini sectors, and gaps. Each color has a meaning in the context of the lap times, sector times or mini sectors.
 			</p>
 
@@ -191,9 +191,9 @@ export default function HelpPage() {
 			<h2 className="my-4 text-2xl">Delay Control</h2>
 
 			<p className="mb-4">
-				When using f1-dash while watching on TV or on F1TV or your favorite streaming platform you will notice that
-				f1-dash updates much earlier than your stream this might make very interesting race events less interesting as
-				you see them on f1-dash before experiencing them on your stream. This is where the delay control comes in.
+				When using while watching on TV or on F1TV or your favorite streaming platform you will notice that f1-onboard
+				updates much earlier than your stream this might make very interesting race events less interesting as you see
+				them on before experiencing them on your stream. This is where the delay control comes in.
 			</p>
 
 			<p className="mb-4">

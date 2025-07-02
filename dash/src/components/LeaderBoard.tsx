@@ -22,7 +22,7 @@ export default function LeaderBoard({ drivers, driversTiming, driversTimingStats
 	const { uiElements } = useMode();
 
 	return (
-		<div className="flex w-fit flex-col divide-y divide-zinc-800">
+		<div className="glass  overflow-hidden hover-lift">
 			{uiElements.tableHeaders && <TableHeaders />}
 
 			{(!drivers || !driversTiming) &&
@@ -54,13 +54,9 @@ export default function LeaderBoard({ drivers, driversTiming, driversTimingStats
 
 const TableHeaders = () => {
 	return (
-		<div
-			className="grid items-center gap-2 p-1 px-2 text-sm font-medium text-zinc-500"
-			style={{
-				gridTemplateColumns: "5.5rem 4rem 5.5rem 4rem 5rem 5.5rem auto auto",
-			}}
-		>
-			<p>Position</p>
+		<div className="grid grid-cols-[auto_4px_1fr_auto_auto_auto_auto] gap-x-4 px-4 py-2 text-xs text-white/60 uppercase font-semibold border-b border-white/20 bg-white/5">
+
+		<p>Position</p>
 			<p>DRS</p>
 			<p>Tire</p>
 			<p>Info</p>
@@ -72,16 +68,12 @@ const TableHeaders = () => {
 };
 
 const SkeletonDriver = () => {
-	const animateClass = "h-8 animate-pulse rounded-md bg-zinc-800";
+	const animateClass = "h-8 animate-pulse rounded-md";
 
 	return (
-		<div
-			className="h-18 grid place-items-center items-center gap-1 px-2 py-1"
-			style={{
-				gridTemplateColumns: "6rem 4rem 5rem 4rem 5rem 5rem 19.5rem",
-			}}
-		>
-			<div className={animateClass} style={{ width: "100%" }} />
+		<div className="grid grid-cols-[auto_4px_1fr_auto_auto_auto_auto] items-center gap-x-4 px-4 py-3 border-b border-white/10 last:border-b-0 hover:bg-white/5 transition-colors duration-200">
+
+		<div className={animateClass} style={{ width: "100%" }} />
 
 			<div className={animateClass} style={{ width: "90%" }} />
 

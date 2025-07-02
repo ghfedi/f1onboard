@@ -5,16 +5,16 @@ export default function Page() {
 
 			<div className="my-2 rounded-lg bg-blue-600 p-4">
 				<p>
-					f1-dash v2 beta is out now, feel free to test it and give feedback in the community Discord or on GitHub. You
-					will find both links in the footer of the new website.
+					f1-onboard v2 beta is out now, feel free to test it and give feedback in the community Discord or on GitHub.
+					You will find both links in the footer of the new website.
 				</p>
 				<a className="text-blue-300 underline" target="_blank" href="https://v2.f1-dash.com?utm_campaign=v2-beta">
-					v2.f1-dash.com
+					v2.f1-onboard.com
 				</a>
 			</div>
 
 			<p className="mb-2 text-zinc-400">
-				Hey there! First thank you for being here, using f1-dash, it's been amazing seeing it being used and the
+				Hey there! First thank you for being here, using f1-onboard, it's been amazing seeing it being used and the
 				feedback on it on different platforms, like GitHub, Twitter, Mastodon, <code>improve.slowly.dev</code> and more.
 			</p>
 
@@ -22,7 +22,7 @@ export default function Page() {
 			<p className="mb-4 text-sm text-zinc-400">(TL;DR; at the bottom of the page)</p>
 
 			<p className="mb-2 text-zinc-400">
-				Back in the beginning of 2023 I had the idea to develop f1-dash, and I started developing the backend which
+				Back in the beginning of 2023 I had the idea to develop f1-onboard, and I started developing the backend which
 				handles all the data from f1 and sends it to your browser. It took multiple attempts to get the backend right,
 				as I was working with a new programming language (rust) which I never used before this project.
 			</p>
@@ -34,7 +34,7 @@ export default function Page() {
 			</p>
 
 			<p className="mb-2 text-zinc-400">
-				In August 2023 I released f1-dash to the public by making a few posts here and there (mastodon, lemmy, tried
+				In August 2023 I released f1-onboard to the public by making a few posts here and there (mastodon, lemmy, tried
 				reddit, but was not able to post).
 			</p>
 
@@ -46,9 +46,9 @@ export default function Page() {
 			</p>
 
 			<p className="mb-2 text-zinc-400">
-				But During 2024 Pre-Season Testing, that changed drastically, more people than ever where using f1-dash. Which
-				was amazing to see, but there was one catch. The quickly thrown together backend was not able to handle these
-				amounts of traffic anymore. Issues like the following started to appear:
+				But During 2024 Pre-Season Testing, that changed drastically, more people than ever where using f1-onboard.
+				Which was amazing to see, but there was one catch. The quickly thrown together backend was not able to handle
+				these amounts of traffic anymore. Issues like the following started to appear:
 			</p>
 
 			<ul className="mb-2 ml-8 list-disc">

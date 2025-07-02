@@ -6,7 +6,6 @@ type Props = {
 };
 
 const DriverLapTimesComparison = ({ driver }: Props) => {
-	console.log(driver.lastLapTime);
 	return (
 		<div className="lap-times-comparison">
 			<table className="min-w border border-gray-200">

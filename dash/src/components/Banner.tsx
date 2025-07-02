@@ -34,7 +34,7 @@ export default function Banner({ onClick, onClose }: Props) {
 				/>
 			</div>
 			<div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-				<p className="text-sm leading-6 text-white">f1-dash v2 release - check here to see what changed</p>
+				<p className="text-sm leading-6 text-white">f1-onboard v2 release - check here to see what changed</p>
 			</div>
 			<div className="flex flex-1 justify-end">
 				<button onClick={onClose} type="button" className="-m-3 p-3 focus-visible:outline-offset-[-4px]">

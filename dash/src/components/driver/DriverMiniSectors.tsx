@@ -12,10 +12,10 @@ type Props = {
 
 export default function DriverMiniSectors({ sectors = [], bestSectors, tla, showFastest }: Props) {
 	return (
-		<div className="flex gap-2" id="walkthrough-driver-sectors">
+		<div className="flex gap-2">
 			{sectors.map((sector, i) => (
-				<div key={`sector.${tla}.${i}`} className="flex flex-col gap-[0.2rem]">
-					<div className="flex h-[10px] flex-row gap-1">
+				<div key={`sector.${tla}.${i}`} className="flex flex-col gap-1">
+					<div className="flex flex-row gap-1">
 						{sector.segments.map((segment, j) => (
 							<MiniSector status={segment.status} key={`sector.mini.${tla}.${j}`} />
 						))}
@@ -48,8 +48,9 @@ export default function DriverMiniSectors({ sectors = [], bestSectors, tla, show
 function MiniSector({ status }: { status: number }) {
 	return (
 		<div
-			className={clsx("h-[10px] w-2 rounded-[0.2rem]", {
-				"bg-yellow-500": status === 2048 || status === 2052, // TODO unsure
+			style={{ width: 10, height: 5, borderRadius: 2 }}
+			className={clsx({
+				"bg-amber-400": status === 2048 || status === 2052, // TODO unsure
 				"bg-emerald-500": status === 2049,
 				"bg-violet-600": status === 2051,
 				"bg-blue-500": status === 2064,

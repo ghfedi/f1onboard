@@ -59,14 +59,14 @@ export default function Driver({
 		<motion.div
 			layout="position"
 			// onClick={() => setOpen((old) => !old)}
-			className={clsx("flex select-none flex-col gap-1 p-1.5", {
+			className={clsx("flex select-none flex-col gap-1 pb-1 rounded-md", {
 				"opacity-50": timingDriver.knockedOut || timingDriver.retired || timingDriver.stopped,
 				"bg-violet-800 bg-opacity-30": hasFastest,
 				"bg-red-800 bg-opacity-30": sessionPart != undefined && inDangerZone(position, sessionPart),
 			})}
 		>
 			<div
-				className={clsx("grid items-center gap-2")}
+				className={clsx("grid rounded-s items-center gap-2")}
 				style={{
 					gridTemplateColumns: uiElements.carMetrics
 						? "8.5rem 4rem 5.5rem 4rem 5rem 5.5rem auto auto"

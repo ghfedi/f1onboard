@@ -32,8 +32,8 @@ const walkthroughScript: Step[] = [
 			<div className="flex flex-col items-center gap-4">
 				<p className="text-center text-4xl font-bold">Welcome to the walkthrough!</p>
 				<p>
-					This walkthrough should show you how to navigate f1-dash <br />
-					and give you a idea about the different information f1-dash shows. <br />
+					This walkthrough should show you how to navigate f1-onboard <br />
+					and give you a idea about the different information f1-onboard shows. <br />
 					You can skip this walkthrough and do it later by resetting it in the settings.
 				</p>
 			</div>
@@ -65,7 +65,7 @@ const walkthroughScript: Step[] = [
 		label: (
 			<>
 				This allows to stop and start the data, this allows you to easily <br />
-				sync f1-dash with your F1 video stream.
+				sync f1-onboard with your F1 video stream.
 			</>
 		),
 		id: "walkthrough-playback",

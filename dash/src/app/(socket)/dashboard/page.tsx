@@ -27,9 +27,9 @@ export default function Page() {
 		fastestLapDriver?.racingNumber !== undefined ? state?.driverList?.[fastestLapDriver.racingNumber] : undefined;
 
 	return (
-		<div className="flex w-full flex-col bg-gray-950 text-gray-100">
+		<div className="flex relative w-full flex-col">
 			{/* md upwards, desktop ipad design */}
-			<div className="hidden flex-wrap items-center justify-between gap-2 overflow-hidden border-b border-zinc-800 p-2 px-2 md:flex">
+			<div className="hidden flex-wrap items-center justify-between gap-2 overflow-hidden  p-2 px-2 md:flex">
 				<div className="flex flex-wrap items-center justify-between gap-2">
 					<div className="flex w-full items-center justify-between md:w-auto">
 						<SessionInfo session={state?.sessionInfo} clock={state?.extrapolatedClock} timingData={state?.timingData} />
@@ -63,9 +63,11 @@ export default function Page() {
 				</div>
 			</div>
 
-			<div className={clsx("flex w-full flex-col divide-y divide-zinc-800")}>
+			<div className={clsx("flex w-full flex-col divide-y ")}>
 				<div className={clsx("flex w-full flex-col divide-y divide-zinc-800", "xl:flex-row xl:divide-x xl:divide-y-0")}>
 					<div className={clsx("mb-2 overflow-x-auto md:overflow-visible", "xl:flex-[0,0,auto]")}>
+						<div className="glass rounded-2xl overflow-hidden hover-lift">
+
 						<LeaderBoard
 							drivers={state?.driverList}
 							driversTiming={state?.timingData}
@@ -74,7 +76,7 @@ export default function Page() {
 							carsData={carsData}
 						/>
 					</div>
-
+					</div>
 					<div className={clsx("flex flex-col divide-y divide-zinc-800", "xl:min-w-0 xl:flex-grow")}>
 						{state?.sessionInfo?.type === "Qualifying" && (
 							<div className="overflow-x-auto">

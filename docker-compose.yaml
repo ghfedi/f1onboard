@@ -21,14 +21,14 @@ services:
     environment:
       - API_BACKEND_ADDRESS=0.0.0.0:4001
       - RUST_LOG=api=debug
-
+ 
   frontend:
     build:
 
       context: ./dash/
       args:
-        - NEXT_PUBLIC_LIVE_SOCKET_URL=https://live.whitesky-f52affcd.westeurope.azurecontainerapps.io/
-        - NEXT_PUBLIC_API_URL=https://live.whitesky-f52affcd.westeurope.azurecontainerapps.io/
+        - NEXT_PUBLIC_LIVE_SOCKET_URL=https://live-6bcf.onrender.com
+        - NEXT_PUBLIC_API_URL=https://live-6bcf.onrender.com
         - TAG=latest
 
 
@@ -39,5 +39,5 @@ services:
       - api
       - live
     environment:
-      - NEXT_PUBLIC_LIVE_SOCKET_URL=https://live-backend.f1-dash.com
-      - NEXT_PUBLIC_API_URL=https://live-backend.f1-dash.com
+      - NEXT_PUBLIC_LIVE_SOCKET_URL=https://live-6bcf.onrender.com
+      - NEXT_PUBLIC_API_URL=https://live-6bcf.onrender.com
