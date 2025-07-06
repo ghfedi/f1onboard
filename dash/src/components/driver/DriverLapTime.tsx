@@ -16,16 +16,16 @@ export default function DriverLapTime({ last, best, hasFastest }: Props) {
 				className={clsx(
 					"text-lg font-semibold leading-none",
 					getTimeColor(last.overallFastest, last.personalFastest),
-					!last.value ? "text-zinc-600" : "",
+					!last.value ? "text-zinc-400" : "",
 				)}
 			>
 				{!!last.value ? last.value : "-- -- ---"}
 			</p>
 			<p
 				className={clsx(
-					"text-sm font-medium leading-none text-zinc-600",
+					"text-sm font-medium leading-none text-zinc-400",
 					getTimeColor(hasFastest, true),
-					!best.value ? "text-zinc-600" : "",
+					!best.value ? "text-zinc-400" : "",
 				)}
 			>
 				{!!best.value ? best.value : "-- -- ---"}

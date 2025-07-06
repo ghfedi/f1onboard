@@ -290,7 +290,7 @@ export function WalkthroughProvider({ children }: { children: ReactNode }) {
 												Step {step + 1} / {walkthroughScript.length}
 											</p>
 
-											<Button className="!border !border-zinc-600 !bg-transparent" onClick={() => end()}>
+											<Button className="!border !border-zinc-400 !bg-transparent" onClick={() => end()}>
 												Skip
 											</Button>
 
@@ -316,7 +316,7 @@ export function WalkthroughProvider({ children }: { children: ReactNode }) {
 								<Button onClick={() => end()}>Close</Button>
 							) : (
 								<div className="flex justify-end gap-2">
-									<Button className="!border !border-zinc-600 !bg-transparent" onClick={() => end()}>
+									<Button className="!border !border-zinc-400 !bg-transparent" onClick={() => end()}>
 										Skip
 									</Button>
 

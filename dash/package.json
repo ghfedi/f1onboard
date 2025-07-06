@@ -22,6 +22,7 @@
 		"pako": "2.1.0",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
+		"recharts": "^3.0.2",
 		"sharp": "0.33.4",
 		"zod": "3.23.8"
 	},
@@ -33,14 +34,14 @@
 		"@types/react-dom": "18.3.0",
 		"autoprefixer": "10.4.19",
 		"concurrently": "^9.0.1",
+		"electron": "^33.0.2",
 		"electron-builder": "^25.1.8",
 		"postcss": "8.4.38",
 		"prettier": "3.3.2",
 		"prettier-plugin-tailwindcss": "0.6.5",
 		"tailwindcss": "3.4.4",
 		"typescript": "5.5.2",
-		"wait-on": "^8.0.1",
-		"electron": "^33.0.2"
+		"wait-on": "^8.0.1"
 	},
 	"build": {
 		"appId": "com.example.app",
@@ -54,5 +55,4 @@
 			"target": "AppImage"
 		}
 	}
-
 }

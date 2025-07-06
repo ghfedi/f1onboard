@@ -21,7 +21,7 @@ export default function DriverCarMetrics({ carData }: Props) {
 				<p className="text-right font-mono font-medium leading-none">
 					{speedPreference === "km/h" ? carData[2] : convertKmhToMph(carData[2])}
 				</p>
-				<p className="text-sm leading-none text-zinc-600">{speedPreference}</p>
+				<p className="text-sm leading-none text-zinc-400">{speedPreference}</p>
 			</div>
 
 			<div className="flex flex-col">

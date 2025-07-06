@@ -3,6 +3,7 @@ import { DriverList, TimingData, TimingStats, TimingAppData, CarsData } from "@/
 import DriverTag from "@/components/driver/DriverTag";
 import DriverBattle from "@/components/driver/DriverBattle";
 import DriverLapTimesComparison from "@/components/DriverLapTimesComparison";
+import DriverChart from "@/components/driver/DriverChart";
 
 type Props = {
 	drivers: DriverList | undefined;
@@ -43,8 +44,8 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 	};
 
 	return (
-		<div className="battle-mode">
-			<div className="driver-selection">
+		<div className="flex flex-col gap-2 p-0">
+			<div className="driver-list flex flex-wrap gap-2">
 				{drivers &&
 					Object.values(drivers).map((driver) => (
 						<button
@@ -52,7 +53,7 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 							onClick={() => toggleDriverSelection(driver.racingNumber)}
 							className={selectedDrivers.includes(driver.racingNumber) ? "selected" : ""}
 						>
-							<DriverTag className="!min-w-full" short="" short2={driver.lastName} teamColor={driver.teamColour} />
+							<DriverTag className="!min-w-full" short="" short2={driver.tla} teamColor={driver.teamColour} />
 						</button>
 					))}
 			</div>
@@ -63,7 +64,6 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 					const appTimingDriver = driversAppTiming!.lines[racingNumber];
 					const timingStatsDriver = driversTimingStats!.lines[racingNumber];
 					const carData = carsData ? carsData[racingNumber]?.Channels : undefined;
-
 					return (
 						<div key={racingNumber}>
 							<DriverBattle

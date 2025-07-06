@@ -26,7 +26,7 @@ export default function DriverMiniSectors({ sectors = [], bestSectors, tla, show
 							className={clsx(
 								"text-lg font-semibold leading-none",
 								getTimeColor(sector.overallFastest, sector.personalFastest),
-								!sector.value ? "text-zinc-600" : "",
+								!sector.value ? "text-zinc-400" : "",
 								showFastest ? "!text-sm" : "",
 							)}
 						>

@@ -18,6 +18,9 @@ import DriverTire from "./DriverTire";
 import DriverLapTime from "./DriverLapTime";
 import DriverMiniSectors from "@/components/driver/DriverMiniSectors";
 import DriverGap from "@/components/driver/DriverGap";
+import clsx from "clsx";
+import {getSectorColorBG, getSectorColorText} from "@/lib/getTimeColor";
+import DriverCarMetrics from "@/components/driver/DriverCarMetrics";
 
 type Props = {
 	position: number;
@@ -93,18 +96,20 @@ export default function DriverBattle({
 
 							<div className="flex items-center justify-between">
 							<div className="flex items-center space-x-4">
-								<div className="flex items-center space-x-8">
+								<div className="flex items-center space-x-4">
 
-									<div className="text-white/60 text-md">
+									<div className="text-white/60 text-md ">
 										<DriverTire stints={appTimingDriver?.stints} />
 									</div>
-									<DriverDRS
-										on={carData ? hasDRS(carData[45]) : false}
-										possible={carData ? possibleDRS(carData[45]) : false}
-										inPit={timingDriver.inPit}
-										pitOut={timingDriver.pitOut}></DriverDRS>
-								</div>
-
+									<div className="flex items-center text-md space-x-4 w-16 justify-center">
+										<DriverDRS
+											on={carData ? hasDRS(carData[45]) : false}
+											possible={carData ? possibleDRS(carData[45]) : false}
+											inPit={timingDriver.inPit}
+											pitOut={timingDriver.pitOut}></DriverDRS>
+									</div>
+								</div >
+								{uiElements.carMetrics && carData && <DriverSpeedometer carData={carData} />}
 
 							</div>
 
@@ -119,13 +124,27 @@ export default function DriverBattle({
 							<div className="flex justify-between text-xs text-white/60 mb-1">
 								<span>Sectors Performance</span>
 														</div>
-							<div className="h-2 bg-white/10 rounded-full">
-								<DriverMiniSectors
-									sectors={timingDriver.sectors}
-									bestSectors={timingStatsDriver?.bestSectors}
-									tla={driver.tla}
-									showFastest={uiElements.sectorFastest}
-								/>
+							<div className="grid grid-cols-3 gap-1">
+								{timingDriver.sectors.map((sector, i) => (
+									<div className="flex flex-col gap-1" key={`quali.sector.${driver.tla}.${i}`}>
+										<div
+											className={clsx(
+												"h-4 rounded-md",
+												getSectorColorBG(sector.overallFastest, sector.personalFastest),
+												!sector.value ? "!bg-gray-500" : "",
+											)}
+										/>
+										<p
+											className={clsx(
+												"text-center text-lg font-semibold leading-none",
+												getSectorColorText(sector.overallFastest, sector.personalFastest),
+												!sector.value ? "!text-gray-500" : "",
+											)}
+										>
+											{!!sector.value ? sector.value : "-- ---"}
+										</p>
+									</div>
+								))}
 							</div>
 						</div>
 					</div>

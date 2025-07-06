@@ -9,7 +9,7 @@ type Props = {
 
 export default function DriverSpeedometer({ carData }: Props) {
 	return (
-		<div className="flex size-40 flex-col items-center justify-center">
+		<div className="flex size-20 flex-col items-center justify-center">
 			<SpeedGauge
 				value={carData[0]}
 				min={0}
@@ -21,9 +21,9 @@ export default function DriverSpeedometer({ carData }: Props) {
 			/>
 
 			<SpeedGauge
-				value={5}
+				value={carData[4]}
 				min={0}
-				max={10}
+				max={100}
 				startAngle={-130}
 				endAngle={80}
 				size={40}
@@ -33,9 +33,9 @@ export default function DriverSpeedometer({ carData }: Props) {
 			/>
 
 			<SpeedGauge
-				value={!!carData[5] ? 10 : 0}
+				value={carData[5]}
 				min={0}
-				max={10}
+				max={1}
 				startAngle={95}
 				endAngle={90}
 				size={30}

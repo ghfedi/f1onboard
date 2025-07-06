@@ -19,7 +19,7 @@ export default function DriverTag({ position, teamColor, short, className, short
 
 			<div className="h-min w-min flex-col items-start justify-start px-1">
 				<p className="font-formula1 text-white tracking-wider">{short}</p>
-				<p className="font-formula1 text-zinc-600" style={{ ...(teamColor && { color: `#${teamColor}` }) }}>
+				<p className="font-formula1 text-white" style={{ ...(teamColor && { color: `#${teamColor}` }) }}>
 					{short2}
 				</p>
 			</div>

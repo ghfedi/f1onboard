@@ -23,7 +23,7 @@ export default function TrackViolationsDriver({ driver, driverViolations, driver
 					<Image src={octagonX} className="size-6" alt="x in octagon" />
 				))}
 			</div>
-			<div className="flex flex-col justify-center text-sm text-zinc-600">
+			<div className="flex flex-col justify-center text-sm text-zinc-400">
 				<p>
 					{driverViolations} Violations
 					{driverViolations > 4 && <span> - {Math.round(driverViolations / 5) * 5}s Penalty</span>}

@@ -66,7 +66,7 @@ export default function Page() {
 			<div className={clsx("flex w-full flex-col divide-y ")}>
 				<div className={clsx("flex w-full flex-col divide-y divide-zinc-800", "xl:flex-row xl:divide-x xl:divide-y-0")}>
 					<div className={clsx("mb-2 overflow-x-auto md:overflow-visible", "xl:flex-[0,0,auto]")}>
-						<div className="glass rounded-2xl overflow-hidden hover-lift">
+						<div className=" rounded-2xl overflow-hidden hover-lift">
 
 						<LeaderBoard
 							drivers={state?.driverList}
@@ -75,18 +75,27 @@ export default function Page() {
 							driversAppTiming={state?.timingAppData}
 							carsData={carsData}
 						/>
+
+						</div>
+
 					</div>
-					</div>
+
 					<div className={clsx("flex flex-col divide-y divide-zinc-800", "xl:min-w-0 xl:flex-grow")}>
-						{state?.sessionInfo?.type === "Qualifying" && (
+
 							<div className="overflow-x-auto">
-								<Qualifying
+								<BattleMode
 									drivers={state?.driverList}
 									driversTiming={state?.timingData}
-									appDriversTiming={state?.timingAppData}
+									driversTimingStats={state?.timingStats}
+									driversAppTiming={state?.timingAppData}
+									carsData={carsData}
 								/>
+								{/*<Qualifying*/}
+								{/*	drivers={state?.driverList}*/}
+								{/*	driversTiming={state?.timingData}*/}
+								{/*	appDriversTiming={state?.timingAppData}*/}
+								{/*/>*/}
 							</div>
-						)}
 
 						<div className="hidden w-full xl:block">
 							<Map
@@ -136,7 +145,7 @@ export default function Page() {
 					</div>
 				</div>
 
-				<div className="xl:hidden">
+				<div className="md:hidden">
 					<Map
 						circuitKey={state?.sessionInfo?.meeting.circuit.key}
 						positions={positions}
@@ -149,13 +158,7 @@ export default function Page() {
 			</div>
 
 			<div className="px-2">
-				<BattleMode
-					drivers={state?.driverList}
-					driversTiming={state?.timingData}
-					driversTimingStats={state?.timingStats}
-					driversAppTiming={state?.timingAppData}
-					carsData={carsData}
-				/>
+
 			</div>
 		</div>
 	);

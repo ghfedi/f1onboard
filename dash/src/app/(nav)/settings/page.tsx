@@ -97,7 +97,7 @@ export default function SettingsPage() {
 	// };
 
 	return (
-		<div className="container mx-auto max-w-screen-lg px-4">
+		<div className=" relative container mx-auto max-w-screen-lg px-4">
 			<h1 className="my-4 text-3xl">Settings</h1>
 
 			<h2 className="my-4 text-2xl">Configure Custom Mode</h2>

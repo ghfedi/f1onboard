@@ -108,7 +108,7 @@ const SubLayout = ({ children }: Props) => {
         
         .glass {
           background: var(--glass-bg);
-          backdrop-filter: blur(20px);
+          backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(20px);
           border: 1px solid var(--glass-border);
           box-shadow: 0 8px 32px var(--glass-shadow);
@@ -117,18 +117,14 @@ const SubLayout = ({ children }: Props) => {
         .glass-strong {
           background: rgba(255, 255, 255, 0.15);
           backdrop-filter: blur(25px);
-          -webkit-backdrop-filter: blur(25px);
+          -webkit-backdrop-filter: blur(20px);
           border: 1px solid rgba(255, 255, 255, 0.3);
           box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
         
         .gradient-bg {
-          background: linear-gradient(135deg, 
-            #667eea 0%, 
-            #2a5298 25%, 
-            #667eea 50%, 
-            #764ba2 75%, 
-            #f093fb 100%);
+
+background: linear-gradient(135deg,#030712, #030712);
         }
         
         .text-shadow {
@@ -146,11 +142,7 @@ const SubLayout = ({ children }: Props) => {
       `}</style>
 			{/* Animated Background */}
 			<div className="fixed inset-0 gradient-bg">
-				<div className="absolute inset-0 opacity-30">
-					<div className="absolute top-0 left-0 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-					<div className="absolute top-0 right-0 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-					<div className="absolute bottom-0 left-0 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
-				</div>
+
 			</div>
 			<div className="grid grid-cols-1 relative items-center gap-4 border-b  p-2 md:grid-cols-2">
 				<Menubar />

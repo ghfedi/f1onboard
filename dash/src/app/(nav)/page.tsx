@@ -60,7 +60,7 @@ export default function Home() {
 				<h2 className="mb-4 text-2xl">Whats on our roadmap?</h2>
 
 				<p className="text-md">
-					{roadmap.join(" · ")} {" · "} <span className="text-zinc-600">Your suggestion?</span>
+					{roadmap.join(" · ")} {" · "} <span className="text-zinc-400">Your suggestion?</span>
 				</p>
 			</section>
 

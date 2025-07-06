@@ -14,16 +14,12 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
 	const [showFastestLap, setShowFastestLap] = useState<boolean>(false);
 
 	useEffect(() => {
-		if (
-			fastestLapDriver &&
-			(!overallFastestLap || fastestLapDriver.personalBestLapTime.value < overallFastestLap.personalBestLapTime.value)
-		) {
-			setOverallFastestLap(fastestLapDriver);
-			setShowFastestLap(true);
+		if (showFastestLap) {
 			const timer = setTimeout(() => setShowFastestLap(false), 5000);
 			return () => clearTimeout(timer);
 		}
-	}, [fastestLapDriver, overallFastestLap]);
+	}, [showFastestLap]);
+
 
 	useEffect(() => {
 		if (latestRaceControlMessage) {
@@ -33,10 +29,20 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
 		}
 	}, [latestRaceControlMessage]);
 
+	useEffect(() => {
+		if (
+			fastestLapDriver &&
+			(!overallFastestLap || fastestLapDriver.personalBestLapTime.value < overallFastestLap.personalBestLapTime.value)
+		) {
+			setOverallFastestLap(fastestLapDriver);
+			setShowFastestLap(true); // Le second useEffect démarre alors le timer
+		}
+	}, [fastestLapDriver, overallFastestLap]);
+
 	return (
 		<div className="z-50 p-0">
 			<AnimatePresence>
-				{/* {showFastestLap && overallFastestLap && fastestdriver && (
+				 {showFastestLap && overallFastestLap && fastestdriver && (
                     <motion.div
                         key="fastestLap"
                         initial={{ opacity: 0, y: -20 }}
@@ -49,7 +55,7 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
                     >
                         Fastest Lap- <span style={{ color: `#${fastestdriver.teamColour}` }}>{fastestdriver.lastName}</span> - {overallFastestLap.personalBestLapTime.value}
                     </motion.div>
-                )}*/}
+                )}
 				{displayedMessage && (
 					<motion.div
 						key="raceControl"
