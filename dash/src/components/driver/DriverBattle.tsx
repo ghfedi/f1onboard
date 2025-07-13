@@ -21,6 +21,7 @@ import DriverGap from "@/components/driver/DriverGap";
 import clsx from "clsx";
 import {getSectorColorBG, getSectorColorText} from "@/lib/getTimeColor";
 import DriverCarMetrics from "@/components/driver/DriverCarMetrics";
+import DriverChart from "@/components/driver/DriverChart";
 
 type Props = {
 	position: number;

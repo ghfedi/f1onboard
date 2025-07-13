@@ -127,24 +127,13 @@ const SubLayout = ({ children }: Props) => {
 background: linear-gradient(135deg,#030712, #030712);
         }
         
-        .text-shadow {
-          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .hover-lift {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .hover-lift:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-        }
+   
       `}</style>
 			{/* Animated Background */}
-			<div className="fixed inset-0 gradient-bg">
+			<div className=" gradient-bg">
 
-			</div>
-			<div className="grid grid-cols-1 relative items-center gap-4 border-b  p-2 md:grid-cols-2">
+
+			<div className="grid grid-cols-1 relative items-center gap-4 p-2 md:grid-cols-2 ">
 				<Menubar />
 
 				<div className="flex relative items-center gap-2 sm:hidden">
@@ -181,6 +170,6 @@ background: linear-gradient(135deg,#030712, #030712);
 			)}
 
 			<div className={clsx("h-max w-full", syncing && "hidden")}>{children}</div>
-		</div>
+		</div></div>
 	);
 };

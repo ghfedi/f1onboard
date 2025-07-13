@@ -13,6 +13,11 @@ type Props = {
 	carsData: CarsData | null;
 };
 
+// BattleMode component allows users to select drivers and compare their performance
+// It supports selecting up to 2 drivers and calculates the gap between them
+// Displays selected drivers with their timing and car data
+// The gap calculation is based on the gap to leader from the timing data
+
 const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTiming, carsData }: Props) => {
 	const [selectedDrivers, setSelectedDrivers] = useState<string[]>([]);
 	const [maxDrivers, setMaxDrivers] = useState<number>(2);

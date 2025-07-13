@@ -1,19 +1,66 @@
+## Overview
+F1-Onboard is a real-time Formula 1 dashboard application that provides telemetry and timing data visualization for F1 races. The application consists of a Next.js frontend and a Rust backend, offering various features for F1 enthusiasts to track and analyze race data.
 
+## Core Goals
+1. Provide real-time visualization of Formula 1 race data
+2. Display comprehensive telemetry information for all drivers
+3. Enable comparison between drivers' performance
+4. Support both live race tracking and historical race replay
+5. Offer an intuitive and responsive user interface
+6. Ensure accurate and reliable data processing
 
-<h1 align="center">Real-time Formula 1 telemetry and timing</h1>
+## Functional Requirements
 
-## f1-Onboard
+### Data Acquisition
+- Connect to official F1 data sources
+- Record and save race sessions for later replay
+- Process telemetry data in real-time
+- Handle data streaming with minimal latency
 
-A real-time F1 dashboard that shows the leader board, tires, gaps, laps, mini sectors and much more
+### Race Information Display
+- Show current leaderboard with positions and gaps
+- Display lap times and sector information
+- Visualize tire usage and strategy
+- Show DRS (Drag Reduction System) status
+- Present weather conditions and track information
+- Display race control messages and flags
 
-## contributing
+### Driver-Specific Features
+- Show detailed driver information
+- Visualize car metrics (speed, RPM, gear, etc.)
+- Display pedal inputs
+- Show mini-sector performance
+- Track tire history and current tire status
+- Compare drivers' performance in battle mode
 
-I really appreciate it if you want to contribute to this project. I can recommend the GitHub issues marked as "Good First Issue" to get started. Also please read [`CONTRIBUTING.md`](CONTRIBUTING.md) to learn how to contribute and setup f1-dash on your local machine for development.
+### User Interface
+- Provide responsive design for different screen sizes
+- Support different viewing modes (dashboard, battle, etc.)
+- Allow customization of displayed information
+- Ensure accessibility for users with disabilities
 
-## supporting
+## Technical Requirements
 
-If you want to support me and make me focus more on this project, support me here by [buying me a coffee](https://www.buymeacoffee.com/fedighribi).
+### Frontend
+- Use Next.js for the web application
+- Implement real-time updates using WebSockets
+- Ensure responsive and performant UI
+- Support modern browsers
 
-## notice
+### Backend
+- Use Rust for performance-critical components
+- Implement efficient data processing
+- Provide WebSocket server for real-time communication
+- Support API endpoints for schedule and historical data
 
-This project/website is unofficial and is not associated in any way with the Formula 1 companies. F1, FORMULA ONE, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX and related marks are trade marks of Formula One Licensing B.V
+### Development and Deployment
+- Support containerized deployment with Docker
+- Implement CI/CD pipelines
+- Ensure code quality through testing
+- Follow best practices for security
+
+## Constraints
+- Must handle high-frequency data updates
+- Should work with limited network bandwidth
+- Must respect Formula 1's intellectual property rights
+- Should be usable on various devices and screen sizes

@@ -197,20 +197,12 @@ export default function HelpPage() {
 			</p>
 
 			<p className="mb-4">
-				With delay control you can set a delay in seconds to make f1-dash update later than it would normally do. So
-				when setting a 30 seconds delay f1-dash will update 30 seconds later than it would normally do.
-				<br />
-				You can use this to sync your stream with f1-dash.
+				With delay control vous pouvez définir un délai en secondes pour que F1-Onboard se mette à jour plus tard que la normale. Donc
+				quand vous définissez un délai de 30 secondes, F1-Onboard se mettra à jour 30 secondes plus tard que la normale.
+				Vous pouvez utiliser cela pour synchroniser votre stream avec F1-Onboard.
 			</p>
 
-			<Note className="mb-4">
-				Currently you can only set a delay that is the time you have been on the dashboard page. So 30s on a 20s page
-				visit make you wait 10s until playback of the updates resumes. (This will be changed in the future)
-			</Note>
-
-			<h3 className="my-4 text-xl">Options to sync</h3>
-
-			<p className="mb-4">There are multiple ways you can set your delay so f1-dash is synced to your stream.</p>
+			<p className="mb-4">Il existe plusieurs façons de définir votre délai afin que F1-Onboard soit synchronisé avec votre stream.</p>
 
 			<div className="mb-4 flex gap-2">
 				<div className="flex gap-1">
@@ -269,7 +261,7 @@ export default function HelpPage() {
 			<h2 className="my-4 text-2xl">Windows</h2>
 
 			<p className="mb-4">
-				On desktop and laptops and if your browser supports it you can open certain parts of f1-dash in a separate
+				On desktop and laptops and if your browser supports it you can open certain parts of F1-Onboard in a separate
 				windows. This can be useful if you have a second screen and want things like the track map, track violations and
 				more on a separate screen.
 			</p>

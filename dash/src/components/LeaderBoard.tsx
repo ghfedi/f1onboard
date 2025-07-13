@@ -22,7 +22,7 @@ export default function LeaderBoard({ drivers, driversTiming, driversTimingStats
 	const { uiElements } = useMode();
 
 	return (
-		<div className="glass  overflow-hidden hover-lift">
+		<div className=" overflow-hidden hover-lift">
 			{uiElements.tableHeaders && <TableHeaders />}
 
 			{(!drivers || !driversTiming) &&

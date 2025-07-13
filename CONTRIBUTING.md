@@ -16,7 +16,7 @@ To get started with the frontend do the following
 
 ```bash
 # clone the repository or your fork
-git clone git@github.com:slowlydev/f1-dash.git
+git clone git@github.com:ghfedi/f1onboard.git
 
 # go to the frontend
 cd dash/
@@ -38,7 +38,7 @@ Before we can use frontend and start developing it, we need to setup the backend
 From here on now we enter the rust part so make sure to have it installed.
 
 ```bash
-cd f1-dash/
+cd F1-Onboard/
 
 # if you haven't installed rust & cargo run the following
 rustup toolchain install
@@ -56,16 +56,16 @@ cargo r -p api
 Now when you want to develop something where u need to simulate a running race you can use the simulator and pass it a recording of a past race.
 
 ```bash
-cd f1-dash/
+cd F1-Onboard/
 
 # start the simulator
 cargo r -p simulator year-circuit.data.txt
 ```
 
-You can find existing recordings [here](https://github.com/slowlydev/f1-dash-data-parser/releases/tag/data). If you want to record your own new sessions heres is how:
+Vous pouvez trouver des enregistrements existants [ici](https://github.com/slowlydev/f1-onboard-data-parser/releases/tag/data). Si vous souhaitez enregistrer vos propres nouvelles sessions, voici comment faire :
 
 ```bash
-cd f1-dash/
+cd F1-Onboard/
 
 # start the saver and save the recording in the year-circuit.data.txt file
 cargo r -p saver year-circuit.data.txt
