@@ -140,8 +140,8 @@ jobs:
               - api
               - live
             environment:
-              - NEXT_PUBLIC_LIVE_SOCKET_URL=${{ env.NEXT_PUBLIC_LIVE_SOCKET_URL }}
-              - NEXT_PUBLIC_API_URL=${{ env.NEXT_PUBLIC_API_URL }}
+              - NEXT_PUBLIC_LIVE_SOCKET_URL=${{ secrets.NEXT_PUBLIC_LIVE_SOCKET_URL }}
+              - NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
         EOF
         
     - name: Upload docker-compose.prod.yml as artifact
