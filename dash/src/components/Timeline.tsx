@@ -8,7 +8,8 @@ import {
 
 } from "framer-motion";
 
-import { useState, useRef, useEffect, MutableRefObject, Dispatch, SetStateAction } from "react";
+import { useState, useRef, useEffect, MutableRefObject, Dispatch, SetStateAction, memo } from "react";
+import React from "react";
 
 /**
  * Calculates the progress (0-1) based on the x-coordinate relative to a container
@@ -97,7 +98,7 @@ type Props = {
  * @param props - Component properties
  * @returns A React component for timeline control
  */
-export default function Timeline({ playing, maxDelay, time, setTime }: Props) {
+function Timeline({ playing, maxDelay, time, setTime }: Props) {
 	const DURATION = maxDelay;
 
 	let [dragging, setDragging] = useState(false);
@@ -203,3 +204,29 @@ export default function Timeline({ playing, maxDelay, time, setTime }: Props) {
 		</div>
 	);
 }
+
+/**
+ * Custom comparison function for React.memo
+ * Performs a comparison of props to prevent unnecessary re-renders
+ * 
+ * @param prevProps - Previous component props
+ * @param nextProps - Next component props
+ * @returns True if the component should not re-render, false otherwise
+ */
+const arePropsEqual = (prevProps: Props, nextProps: Props): boolean => {
+	// Compare playing state
+	if (prevProps.playing !== nextProps.playing) return false;
+
+	// Compare maxDelay
+	if (prevProps.maxDelay !== nextProps.maxDelay) return false;
+
+	// Compare time
+	if (prevProps.time !== nextProps.time) return false;
+
+	// We don't compare setTime function as it's unlikely to change
+	// and comparing functions is generally not reliable
+
+	return true;
+};
+
+export default memo(Timeline, arePropsEqual);

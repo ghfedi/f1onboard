@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { DriverList, TimingData, TimingStats, TimingAppData, CarsData } from "@/types/state.type";
 import DriverTag from "@/components/driver/DriverTag";
 import DriverBattle from "@/components/driver/DriverBattle";
@@ -114,4 +114,31 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 		</div>
 	);
 };
-export default BattleMode;
+/**
+ * Custom comparison function for React.memo
+ * Performs a deep comparison of props to prevent unnecessary re-renders
+ * 
+ * @param prevProps - Previous component props
+ * @param nextProps - Next component props
+ * @returns True if the component should not re-render, false otherwise
+ */
+const arePropsEqual = (prevProps: Props, nextProps: Props): boolean => {
+	// Compare drivers
+	if (prevProps.drivers !== nextProps.drivers) return false;
+
+	// Compare timing data
+	if (prevProps.driversTiming !== nextProps.driversTiming) return false;
+
+	// Compare timing stats
+	if (prevProps.driversTimingStats !== nextProps.driversTimingStats) return false;
+
+	// Compare app timing data
+	if (prevProps.driversAppTiming !== nextProps.driversAppTiming) return false;
+
+	// Compare cars data
+	if (prevProps.carsData !== nextProps.carsData) return false;
+
+	return true;
+};
+
+export default memo(BattleMode, arePropsEqual);

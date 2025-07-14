@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import clsx from "clsx";
+import React from "react";
 
 import {
 	DriverList,
@@ -160,7 +161,7 @@ type Corner = {
 	labelPos: TrackPosition;
 };
 
-export default function Map({
+function Map({
 	circuitKey,
 	drivers,
 	timingDrivers,
@@ -427,3 +428,35 @@ const CarDot = ({ pos, name, color, pit, hidden, rotation, centerX, centerY }: C
 		</g>
 	);
 };
+
+/**
+ * Custom comparison function for React.memo
+ * Performs a comparison of props to prevent unnecessary re-renders
+ * 
+ * @param prevProps - Previous component props
+ * @param nextProps - Next component props
+ * @returns True if the component should not re-render, false otherwise
+ */
+const arePropsEqual = (prevProps: Props, nextProps: Props): boolean => {
+	// Compare circuit key
+	if (prevProps.circuitKey !== nextProps.circuitKey) return false;
+
+	// Compare drivers
+	if (prevProps.drivers !== nextProps.drivers) return false;
+
+	// Compare timing drivers
+	if (prevProps.timingDrivers !== nextProps.timingDrivers) return false;
+
+	// Compare track status
+	if (prevProps.trackStatus !== nextProps.trackStatus) return false;
+
+	// Compare race control messages
+	if (prevProps.raceControlMessages !== nextProps.raceControlMessages) return false;
+
+	// Compare positions
+	if (prevProps.positions !== nextProps.positions) return false;
+
+	return true;
+};
+
+export default memo(Map, arePropsEqual);

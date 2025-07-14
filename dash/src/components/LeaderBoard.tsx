@@ -1,5 +1,6 @@
 import { AnimatePresence, LayoutGroup } from "framer-motion";
 import clsx from "clsx";
+import React, { memo } from "react";
 
 import { sortPos } from "@/lib/sorting/sortPos";
 import { objectEntries } from "@/lib/driverHelper";
@@ -18,7 +19,7 @@ type Props = {
 	carsData: CarsData | null;
 };
 
-export default function LeaderBoard({ drivers, driversTiming, driversTimingStats, driversAppTiming, carsData }: Props) {
+function LeaderBoard({ drivers, driversTiming, driversTimingStats, driversAppTiming, carsData }: Props) {
 	const { uiElements } = useMode();
 
 	return (
@@ -109,3 +110,32 @@ const SkeletonDriver = () => {
 		</div>
 	);
 };
+
+/**
+ * Custom comparison function for React.memo
+ * Performs a comparison of props to prevent unnecessary re-renders
+ * 
+ * @param prevProps - Previous component props
+ * @param nextProps - Next component props
+ * @returns True if the component should not re-render, false otherwise
+ */
+const arePropsEqual = (prevProps: Props, nextProps: Props): boolean => {
+	// Compare drivers
+	if (prevProps.drivers !== nextProps.drivers) return false;
+
+	// Compare timing data
+	if (prevProps.driversTiming !== nextProps.driversTiming) return false;
+
+	// Compare timing stats
+	if (prevProps.driversTimingStats !== nextProps.driversTimingStats) return false;
+
+	// Compare app timing data
+	if (prevProps.driversAppTiming !== nextProps.driversAppTiming) return false;
+
+	// Compare cars data
+	if (prevProps.carsData !== nextProps.carsData) return false;
+
+	return true;
+};
+
+export default memo(LeaderBoard, arePropsEqual);
