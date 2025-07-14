@@ -22,24 +22,51 @@ import DriverLapTime from "./DriverLapTime";
 import DriverInfo from "./DriverInfo";
 import DriverCarMetrics from "./DriverCarMetrics";
 
+/**
+ * Props for the Driver component
+ */
 type Props = {
+	/** Current position of the driver in the race/session */
 	position: number;
+	/** Current part of the session (e.g., 1 for Q1, 2 for Q2, 3 for Q3) */
 	sessionPart: number | undefined;
+	/** Driver information */
 	driver: DriverType;
+	/** Timing data for the driver */
 	timingDriver: TimingDataDriver;
+	/** Timing statistics for the driver */
 	timingStatsDriver: TimingStatsDriver | undefined;
+	/** Additional timing application data for the driver */
 	appTimingDriver: TimingAppDataDriver | undefined;
+	/** Telemetry data channels from the car */
 	carData: CarDataChannels | undefined;
 };
 
-const hasDRS = (drs: number) => {
+/**
+ * Determines if DRS is currently active
+ * @param drs - DRS status value from car data
+ * @returns True if DRS is active, false otherwise
+ */
+const hasDRS = (drs: number): boolean => {
 	return drs > 9;
 };
 
-const possibleDRS = (drs: number) => {
+/**
+ * Determines if DRS is available but not currently active
+ * @param drs - DRS status value from car data
+ * @returns True if DRS is available but not active, false otherwise
+ */
+const possibleDRS = (drs: number): boolean => {
 	return drs === 8;
 };
 
+/**
+ * Component that displays information about a driver in a race or session
+ * Shows driver details, position, DRS status, tire information, and timing data
+ * 
+ * @param props - Component properties
+ * @returns A React component displaying driver information
+ */
 export default function Driver({
 	driver,
 	timingDriver,
@@ -51,14 +78,11 @@ export default function Driver({
 }: Props) {
 	const { uiElements } = useMode();
 
-	// const [open, setOpen] = useState<boolean>(false);
-
 	const hasFastest = timingStatsDriver?.personalBestLapTime.position == 1;
 
 	return (
 		<motion.div
 			layout="position"
-			// onClick={() => setOpen((old) => !old)}
 			className={clsx("flex select-none flex-col gap-1 pb-1 rounded-md", {
 				"opacity-50": timingDriver.knockedOut || timingDriver.retired || timingDriver.stopped,
 				"bg-violet-800 bg-opacity-30": hasFastest,
@@ -100,22 +124,21 @@ export default function Driver({
 
 				{uiElements.carMetrics && carData && <DriverCarMetrics carData={carData} />}
 			</div>
-
-			{/* <AnimatePresence>
-				{open && appTimingDriver && (
-					<DriverDetailed
-						racingNumber={driver.racingNumber}
-						timingDriver={timingDriver}
-						history={history}
-						appTimingDriver={appTimingDriver}
-					/>
-				)}
-			</AnimatePresence> */}
 		</motion.div>
 	);
 }
 
-const inDangerZone = (position: number, sessionPart: number) => {
+/**
+ * Determines if a driver is in the elimination zone based on their position and the session part
+ * In Q1, positions > 15 are in danger
+ * In Q2, positions > 10 are in danger
+ * In Q3 or other sessions, no positions are in danger
+ * 
+ * @param position - Current position of the driver
+ * @param sessionPart - Current part of the qualifying session (1 for Q1, 2 for Q2, 3 for Q3)
+ * @returns True if the driver is in the danger zone, false otherwise
+ */
+const inDangerZone = (position: number, sessionPart: number): boolean => {
 	switch (sessionPart) {
 		case 1:
 			return position > 15;

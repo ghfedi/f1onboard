@@ -12,35 +12,59 @@ import {
 } from "@/types/state.type";
 import DriverSpeedometer from "./DriverSpeedometer";
 
-import DriverTag from "./DriverTag";
 import DriverDRS from "./DriverDRS";
 import DriverTire from "./DriverTire";
 import DriverLapTime from "./DriverLapTime";
-import DriverMiniSectors from "@/components/driver/DriverMiniSectors";
 import DriverGap from "@/components/driver/DriverGap";
 import clsx from "clsx";
 import {getSectorColorBG, getSectorColorText} from "@/lib/getTimeColor";
-import DriverCarMetrics from "@/components/driver/DriverCarMetrics";
-import DriverChart from "@/components/driver/DriverChart";
 
+
+/**
+ * Props for the DriverBattle component
+ */
 type Props = {
+	/** Current position of the driver in the race/session */
 	position: number;
+	/** Current part of the session (e.g., 1 for Q1, 2 for Q2, 3 for Q3) */
 	sessionPart: number | undefined;
+	/** Driver information */
 	driver: DriverType;
+	/** Timing data for the driver */
 	timingDriver: TimingDataDriver;
+	/** Timing statistics for the driver */
 	timingStatsDriver: TimingStatsDriver | undefined;
+	/** Additional timing application data for the driver */
 	appTimingDriver: TimingAppDataDriver | undefined;
+	/** Telemetry data channels from the car */
 	carData: CarDataChannels | undefined;
 };
 
-const hasDRS = (drs: number) => {
+/**
+ * Determines if DRS is currently active
+ * @param drs - DRS status value from car data
+ * @returns True if DRS is active, false otherwise
+ */
+const hasDRS = (drs: number): boolean => {
 	return drs > 9;
 };
 
-const possibleDRS = (drs: number) => {
+/**
+ * Determines if DRS is available but not currently active
+ * @param drs - DRS status value from car data
+ * @returns True if DRS is available but not active, false otherwise
+ */
+const possibleDRS = (drs: number): boolean => {
 	return drs === 8;
 };
 
+/**
+ * Component that displays detailed battle information for a driver
+ * Shows driver details, lap times, tire information, DRS status, and sector performance
+ * 
+ * @param props - Component properties
+ * @returns A React component displaying driver battle information
+ */
 export default function DriverBattle({
 	driver,
 	timingDriver,
@@ -52,8 +76,6 @@ export default function DriverBattle({
 }: Props) {
 	const newElement = document.createElement("div");
 	const { uiElements } = useMode();
-
-	// const [open, setOpen] = useState<boolean>(false);
 
 	newElement.id = `driver${driver}`;
 
@@ -153,32 +175,3 @@ export default function DriverBattle({
 		</div>
 	);
 }
-
-// 	return (
-// 		<div className="driver-info">
-// 			<div className="flex flex-col gap-2">
-// 				<div className="driver-headshot">
-// 					<img
-// 						id="driver-headshot"
-// 						src={driver.headshotUrl ?? driver.firstName?.replace("1col", "12col") ?? "../icons/unknowndriver.png"}
-// 						alt="Driver Headshot"
-// 					/>
-// 				</div>
-//
-// 				<DriverTag short={""} short2={driver.lastName} teamColor={driver.teamColour} position={position} />
-// 			</div>
-//
-// 			<div className="flex flex-col gap-2">
-// 				<DriverDRS
-// 					on={carData ? hasDRS(carData[45]) : false}
-// 					possible={carData ? possibleDRS(carData[45]) : false}
-// 					inPit={timingDriver.inPit}
-// 					pitOut={timingDriver.pitOut}
-// 				/>
-// 				<DriverTire stints={appTimingDriver?.stints} />
-// 				<DriverLapTime last={timingDriver.lastLapTime} best={timingDriver.bestLapTime} hasFastest={hasFastest} />
-// 			</div>
-// 			<div>{carData && <DriverSpeedometer carData={carData} />}</div>
-// 		</div>
-// 	);
-// }

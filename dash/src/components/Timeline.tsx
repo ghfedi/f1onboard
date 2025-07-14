@@ -5,28 +5,56 @@ import {
 	useMotionValue,
 	useDragControls,
 	AnimatePresence,
-	useTransform,
-	useMotionTemplate,
+
 } from "framer-motion";
 
 import { useState, useRef, useEffect, MutableRefObject, Dispatch, SetStateAction } from "react";
 
-function getProgressFromX({ x, containerRef }: { x: number; containerRef: MutableRefObject<any> }) {
+/**
+ * Calculates the progress (0-1) based on the x-coordinate relative to a container
+ * 
+ * @param x - The x-coordinate of the point
+ * @param containerRef - Reference to the container element
+ * @returns Progress value between 0 and 1
+ */
+function getProgressFromX({ x, containerRef }: { x: number; containerRef: MutableRefObject<any> }): number {
 	let bounds = containerRef.current.getBoundingClientRect();
 	let progress = (x - bounds.x) / bounds.width;
 	return clamp(progress, 0, 1);
 }
 
-function getXFromProgress({ progress, containerRef }: { progress: number; containerRef: MutableRefObject<any> }) {
+/**
+ * Calculates the x-coordinate based on a progress value (0-1) relative to a container
+ * 
+ * @param progress - Progress value between 0 and 1
+ * @param containerRef - Reference to the container element
+ * @returns The x-coordinate corresponding to the progress
+ */
+function getXFromProgress({ progress, containerRef }: { progress: number; containerRef: MutableRefObject<any> }): number {
 	let bounds = containerRef.current.getBoundingClientRect();
 	return progress * bounds.width;
 }
 
-function clamp(number: number, min: number, max: number) {
+/**
+ * Constrains a number to be within a specified range
+ * 
+ * @param number - The number to clamp
+ * @param min - The minimum value
+ * @param max - The maximum value
+ * @returns The clamped number
+ */
+function clamp(number: number, min: number, max: number): number {
 	return Math.max(min, Math.min(number, max));
 }
 
-function useInterval(callback: () => void, delay: number | null) {
+/**
+ * Custom hook for setting up an interval that can be paused
+ * 
+ * @param callback - Function to call on each interval
+ * @param delay - Interval delay in milliseconds, or null to pause
+ * @returns Reference to the interval
+ */
+function useInterval(callback: () => void, delay: number | null): React.MutableRefObject<number | null> {
 	const intervalRef = useRef<null | number>(null);
 	const savedCallback = useRef(callback);
 
@@ -49,15 +77,26 @@ function useInterval(callback: () => void, delay: number | null) {
 	return intervalRef;
 }
 
+/**
+ * Props for the Timeline component
+ */
 type Props = {
+	/** Function to update the current time */
 	setTime: Dispatch<SetStateAction<number>>;
+	/** Current time in seconds */
 	time: number;
-
+	/** Whether the timeline is currently playing */
 	playing: boolean;
-
+	/** Maximum duration in seconds */
 	maxDelay: number;
 };
 
+/**
+ * A timeline component with a draggable scrubber for controlling playback
+ * 
+ * @param props - Component properties
+ * @returns A React component for timeline control
+ */
 export default function Timeline({ playing, maxDelay, time, setTime }: Props) {
 	const DURATION = maxDelay;
 
@@ -67,17 +106,11 @@ export default function Timeline({ playing, maxDelay, time, setTime }: Props) {
 	let scrubberRef = useRef<null | HTMLButtonElement>(null);
 	let scrubberX = useMotionValue(0);
 	let currentTimePrecise = useMotionValue(time);
-	// let progressPrecise = useTransform(currentTimePrecise, (v) => (v / DURATION) * 100);
-	// let progressPreciseWidth = useMotionTemplate`${progressPrecise}%`;
 	let dragControls = useDragControls();
 
 	let mins = Math.floor(time / 60);
 	let secs = `${time % 60}`.padStart(2, "0");
 	let timecode = `${mins}:${secs}`;
-	// let minsRemaining = Math.floor((DURATION - currentTime) / 60);
-	// let secsRemaining = `${(DURATION - currentTime) % 60}`.padStart(2, "0");
-	// let timecodeRemaining = `${minsRemaining}:${secsRemaining}`;
-	// let progress = (currentTime / DURATION) * 100;
 
 	useInterval(
 		() => {
@@ -117,10 +150,6 @@ export default function Timeline({ playing, maxDelay, time, setTime }: Props) {
 				}}
 			>
 				<div ref={fullBarRef} className="h-1 w-full rounded-full bg-zinc-800" />
-
-				{/* <motion.div layout style={{ width: progressPreciseWidth }} className="absolute top-0">
-					<div className="bg- absolute inset-0 h-[3px] rounded-full bg-slate-500"></div>
-				</motion.div> */}
 
 				<div className="absolute inset-0" ref={constraintsRef}>
 					<motion.button

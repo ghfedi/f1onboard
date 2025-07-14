@@ -2,26 +2,45 @@ import React, { useState, useEffect } from "react";
 import { DriverList, TimingData, TimingStats, TimingAppData, CarsData } from "@/types/state.type";
 import DriverTag from "@/components/driver/DriverTag";
 import DriverBattle from "@/components/driver/DriverBattle";
-import DriverLapTimesComparison from "@/components/DriverLapTimesComparison";
-import DriverChart from "@/components/driver/DriverChart";
 
+
+/**
+ * Props for the BattleMode component
+ */
 type Props = {
+	/** List of all drivers in the session */
 	drivers: DriverList | undefined;
+	/** Timing data for all drivers */
 	driversTiming: TimingData | undefined;
+	/** Timing statistics for all drivers */
 	driversTimingStats: TimingStats | undefined;
+	/** Additional timing application data */
 	driversAppTiming: TimingAppData | undefined;
+	/** Telemetry data for all cars */
 	carsData: CarsData | null;
 };
 
-// BattleMode component allows users to select drivers and compare their performance
-// It supports selecting up to 2 drivers and calculates the gap between them
-// Displays selected drivers with their timing and car data
-// The gap calculation is based on the gap to leader from the timing data
-
+/**
+ * BattleMode component allows users to select drivers and compare their performance
+ * It supports selecting up to 2 drivers and calculates the gap between them
+ * Displays selected drivers with their timing and car data
+ * 
+ * @param props - Component properties
+ * @returns A React component for driver comparison
+ */
 const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTiming, carsData }: Props) => {
+	/** Currently selected driver racing numbers */
 	const [selectedDrivers, setSelectedDrivers] = useState<string[]>([]);
+	/** Maximum number of drivers that can be selected for comparison */
 	const [maxDrivers, setMaxDrivers] = useState<number>(2);
 
+	/**
+	 * Toggles the selection state of a driver
+	 * If the driver is already selected, they will be deselected
+	 * If the driver is not selected and the maximum number of drivers hasn't been reached, they will be selected
+	 * 
+	 * @param racingNumber - Racing number of the driver to toggle
+	 */
 	const toggleDriverSelection = (racingNumber: string) => {
 		setSelectedDrivers((prev) =>
 			prev.includes(racingNumber)
@@ -32,6 +51,13 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 		);
 	};
 
+	/**
+	 * Calculates the time gap between two drivers
+	 * 
+	 * @param driver1 - Racing number of the first driver
+	 * @param driver2 - Racing number of the second driver
+	 * @returns The time gap as a string with 2 decimal places, or null if the gap cannot be calculated
+	 */
 	const calculateGap = (driver1: string, driver2: string): string | null => {
 		if (!driversTiming) return null;
 		const timingDriver1 = driversTiming.lines[driver1];
@@ -84,11 +110,6 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 						</div>
 					);
 				})}
-				{/*                {selectedDrivers.length === 2 && (
-                    <div className="gap-info">
-                        Gap: {calculateGap(selectedDrivers[0], selectedDrivers[1])} seconds
-                    </div>
-                )}*/}
 			</div>
 		</div>
 	);

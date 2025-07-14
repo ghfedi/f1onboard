@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import DriverHistoryTires from "@/components/driver/DriverHistoryTires";
 import Graph from "@/components/Graph";
 
-import { TimingAppDataDriver, TimingDataDriver } from "@/types/state.type";
+import { DriverHistory, TimingAppDataDriver, TimingDataDriver } from "@/types/state.type";
 
 type Props = {
 	racingNumber: string;
-	history: any | undefined;
+	history: DriverHistory | undefined;
 	timingDriver: TimingDataDriver | undefined;
 	appTimingDriver: TimingAppDataDriver;
 };
@@ -34,9 +34,6 @@ export default function DriverDetailed({ racingNumber, history, timingDriver, ap
 			}}
 		>
 			<div className="col-span-2 flex flex-col gap-1 place-self-start text-sm font-medium leading-none text-zinc-400">
-				{/* <p>Expected Box in 3L</p>
-				<p>Average Pit: 22s</p>
-				<p>Expected re-join 8th</p> */}
 			</div>
 
 			<div className="col-span-2 w-full">
