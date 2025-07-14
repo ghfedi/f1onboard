@@ -8,7 +8,7 @@ type Props = {
 
 export default function Layout({ children }: Props) {
 	return (
-		<div className="relative min-h-screen overflow-hidden">
+		<div className="min-h-screen relative overflow-hidden">
 			<style>{`
         :root {
           --glass-bg: rgba(255, 255, 255, 0.1);
@@ -79,11 +79,12 @@ export default function Layout({ children }: Props) {
       `}</style>
 
 			{/* Animated Background */}
-			<div className="gradient-bg fixed inset-0"></div>
-			<div className="fixed left-6 right-6 top-6 z-50">
+			<div className="fixed inset-0 gradient-bg"></div>
+			<div className="fixed top-6 left-6 right-6 z-50">
 				<div className="glass responsive-glass rounded-2xl p-4">
-					<div className="responsive-header-content flex flex-wrap items-center justify-between">
-						<div className="responsive-logo-text flex items-center gap-3">
+					<div className="flex items-center justify-between responsive-header-content flex-wrap">
+						<div className="flex items-center gap-3 responsive-logo-text">
+
 							<div>
 								<p className="text-xs text-white/70">F1 Onboard Next-Gen Racing</p>
 							</div>
@@ -91,7 +92,7 @@ export default function Layout({ children }: Props) {
 
 						<Menubar />
 
-						<div className="responsive-actions hidden items-center gap-4 pr-2 sm:flex">
+						<div className="hidden items-center gap-4 pr-2 sm:flex responsive-actions">
 							<IconLabelButton icon="bmc" href="https://buymeacoffee.com/fedighribi">
 								Coffee
 							</IconLabelButton>
@@ -100,7 +101,7 @@ export default function Layout({ children }: Props) {
 							</IconLabelButton>
 						</div>
 						{/* Mobile actions */}
-						<div className="responsive-actions mt-2 flex w-full items-center gap-2 sm:hidden">
+						<div className="flex items-center gap-2 mt-2 sm:hidden w-full responsive-actions">
 							<IconLabelButton icon="bmc" href="https://buymeacoffee.com/fedighribi">
 								Coffee
 							</IconLabelButton>
@@ -111,7 +112,9 @@ export default function Layout({ children }: Props) {
 					</div>
 				</div>
 			</div>
-			<div className="pt-32 sm:pt-24">{children}</div>
+			<div className="pt-32 sm:pt-24">
+				{children}
+			</div>
 		</div>
 	);
 }

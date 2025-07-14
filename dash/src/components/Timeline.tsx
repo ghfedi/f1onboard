@@ -1,13 +1,19 @@
 "use client";
 
-import { motion, useMotionValue, useDragControls, AnimatePresence } from "framer-motion";
+import {
+	motion,
+	useMotionValue,
+	useDragControls,
+	AnimatePresence,
+
+} from "framer-motion";
 
 import { useState, useRef, useEffect, MutableRefObject, Dispatch, SetStateAction, memo } from "react";
 import React from "react";
 
 /**
  * Calculates the progress (0-1) based on the x-coordinate relative to a container
- *
+ * 
  * @param x - The x-coordinate of the point
  * @param containerRef - Reference to the container element
  * @returns Progress value between 0 and 1
@@ -20,25 +26,19 @@ function getProgressFromX({ x, containerRef }: { x: number; containerRef: Mutabl
 
 /**
  * Calculates the x-coordinate based on a progress value (0-1) relative to a container
- *
+ * 
  * @param progress - Progress value between 0 and 1
  * @param containerRef - Reference to the container element
  * @returns The x-coordinate corresponding to the progress
  */
-function getXFromProgress({
-	progress,
-	containerRef,
-}: {
-	progress: number;
-	containerRef: MutableRefObject<any>;
-}): number {
+function getXFromProgress({ progress, containerRef }: { progress: number; containerRef: MutableRefObject<any> }): number {
 	let bounds = containerRef.current.getBoundingClientRect();
 	return progress * bounds.width;
 }
 
 /**
  * Constrains a number to be within a specified range
- *
+ * 
  * @param number - The number to clamp
  * @param min - The minimum value
  * @param max - The maximum value
@@ -50,7 +50,7 @@ function clamp(number: number, min: number, max: number): number {
 
 /**
  * Custom hook for setting up an interval that can be paused
- *
+ * 
  * @param callback - Function to call on each interval
  * @param delay - Interval delay in milliseconds, or null to pause
  * @returns Reference to the interval
@@ -94,7 +94,7 @@ type Props = {
 
 /**
  * A timeline component with a draggable scrubber for controlling playback
- *
+ * 
  * @param props - Component properties
  * @returns A React component for timeline control
  */
@@ -208,7 +208,7 @@ function Timeline({ playing, maxDelay, time, setTime }: Props) {
 /**
  * Custom comparison function for React.memo
  * Performs a comparison of props to prevent unnecessary re-renders
- *
+ * 
  * @param prevProps - Previous component props
  * @param nextProps - Next component props
  * @returns True if the component should not re-render, false otherwise

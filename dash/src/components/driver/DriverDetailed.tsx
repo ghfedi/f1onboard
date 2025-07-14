@@ -33,7 +33,8 @@ export default function DriverDetailed({ racingNumber, history, timingDriver, ap
 				gridTemplateColumns: "5.5rem 4rem 5.5rem 4rem 5rem 5.5rem auto",
 			}}
 		>
-			<div className="col-span-2 flex flex-col gap-1 place-self-start text-sm font-medium leading-none text-zinc-400"></div>
+			<div className="col-span-2 flex flex-col gap-1 place-self-start text-sm font-medium leading-none text-zinc-400">
+			</div>
 
 			<div className="col-span-2 w-full">
 				<DriverHistoryTires stints={appTimingDriver.stints} />

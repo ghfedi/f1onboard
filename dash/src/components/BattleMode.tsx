@@ -3,6 +3,7 @@ import { DriverList, TimingData, TimingStats, TimingAppData, CarsData } from "@/
 import DriverTag from "@/components/driver/DriverTag";
 import DriverBattle from "@/components/driver/DriverBattle";
 
+
 /**
  * Props for the BattleMode component
  */
@@ -23,7 +24,7 @@ type Props = {
  * BattleMode component allows users to select drivers and compare their performance
  * It supports selecting up to 2 drivers and calculates the gap between them
  * Displays selected drivers with their timing and car data
- *
+ * 
  * @param props - Component properties
  * @returns A React component for driver comparison
  */
@@ -37,7 +38,7 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 	 * Toggles the selection state of a driver
 	 * If the driver is already selected, they will be deselected
 	 * If the driver is not selected and the maximum number of drivers hasn't been reached, they will be selected
-	 *
+	 * 
 	 * @param racingNumber - Racing number of the driver to toggle
 	 */
 	const toggleDriverSelection = (racingNumber: string) => {
@@ -52,7 +53,7 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 
 	/**
 	 * Calculates the time gap between two drivers
-	 *
+	 * 
 	 * @param driver1 - Racing number of the first driver
 	 * @param driver2 - Racing number of the second driver
 	 * @returns The time gap as a string with 2 decimal places, or null if the gap cannot be calculated
@@ -105,6 +106,7 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 								position={parseInt(driversTiming!.lines[racingNumber].position, 10)}
 								sessionPart={driversTiming!.sessionPart}
 							/>
+
 						</div>
 					);
 				})}
@@ -115,7 +117,7 @@ const BattleMode = ({ drivers, driversTiming, driversTimingStats, driversAppTimi
 /**
  * Custom comparison function for React.memo
  * Performs a deep comparison of props to prevent unnecessary re-renders
- *
+ * 
  * @param prevProps - Previous component props
  * @param nextProps - Next component props
  * @returns True if the component should not re-render, false otherwise

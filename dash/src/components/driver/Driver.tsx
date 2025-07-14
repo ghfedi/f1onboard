@@ -63,7 +63,7 @@ const possibleDRS = (drs: number): boolean => {
 /**
  * Component that displays information about a driver in a race or session
  * Shows driver details, position, DRS status, tire information, and timing data
- *
+ * 
  * @param props - Component properties
  * @returns A React component displaying driver information
  */
@@ -83,14 +83,14 @@ export default function Driver({
 	return (
 		<motion.div
 			layout="position"
-			className={clsx("flex select-none flex-col gap-1 rounded-md pb-1", {
+			className={clsx("flex select-none flex-col gap-1 pb-1 rounded-md", {
 				"opacity-50": timingDriver.knockedOut || timingDriver.retired || timingDriver.stopped,
 				"bg-violet-800 bg-opacity-30": hasFastest,
 				"bg-red-800 bg-opacity-30": sessionPart != undefined && inDangerZone(position, sessionPart),
 			})}
 		>
 			<div
-				className={clsx("grid items-center gap-2 p-0.5 rounded-s")}
+				className={clsx("grid rounded-s items-center gap-2")}
 				style={{
 					gridTemplateColumns: uiElements.carMetrics
 						? "8.5rem 4rem 5.5rem 4rem 5rem 5.5rem auto auto"
@@ -133,7 +133,7 @@ export default function Driver({
  * In Q1, positions > 15 are in danger
  * In Q2, positions > 10 are in danger
  * In Q3 or other sessions, no positions are in danger
- *
+ * 
  * @param position - Current position of the driver
  * @param sessionPart - Current part of the qualifying session (1 for Q1, 2 for Q2, 3 for Q3)
  * @returns True if the driver is in the danger zone, false otherwise

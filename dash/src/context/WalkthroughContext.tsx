@@ -167,9 +167,7 @@ const walkthroughScript: Step[] = [
 		label: (
 			<div className="flex w-80 flex-col items-center gap-4">
 				<p className="text-2xl font-bold">Thats it for the walkthrough!</p>
-				<p>
-					I hope with this short walkthrough of the dashboard you learned more about the functionality of F1-Onboard.
-				</p>
+				<p>I hope with this short walkthrough of the dashboard you learned more about the functionality of F1-Onboard.</p>
 				<p>I hope you gave fun using F1-Onboard!</p>
 				<p>If you want to restart the walkthrough got to the settings page found in the top left menu.</p>
 			</div>

@@ -197,14 +197,12 @@ export default function HelpPage() {
 			</p>
 
 			<p className="mb-4">
-				With delay control vous pouvez définir un délai en secondes pour que F1-Onboard se mette à jour plus tard que la
-				normale. Donc quand vous définissez un délai de 30 secondes, F1-Onboard se mettra à jour 30 secondes plus tard
-				que la normale. Vous pouvez utiliser cela pour synchroniser votre stream avec F1-Onboard.
+				With delay control vous pouvez définir un délai en secondes pour que F1-Onboard se mette à jour plus tard que la normale. Donc
+				quand vous définissez un délai de 30 secondes, F1-Onboard se mettra à jour 30 secondes plus tard que la normale.
+				Vous pouvez utiliser cela pour synchroniser votre stream avec F1-Onboard.
 			</p>
 
-			<p className="mb-4">
-				Il existe plusieurs façons de définir votre délai afin que F1-Onboard soit synchronisé avec votre stream.
-			</p>
+			<p className="mb-4">Il existe plusieurs façons de définir votre délai afin que F1-Onboard soit synchronisé avec votre stream.</p>
 
 			<div className="mb-4 flex gap-2">
 				<div className="flex gap-1">

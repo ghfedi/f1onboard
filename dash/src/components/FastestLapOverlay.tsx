@@ -20,6 +20,7 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
 		}
 	}, [showFastestLap]);
 
+
 	useEffect(() => {
 		if (latestRaceControlMessage) {
 			setDisplayedMessage(latestRaceControlMessage);
@@ -41,23 +42,20 @@ export default function FastestLapOverlay({ fastestLapDriver, latestRaceControlM
 	return (
 		<div className="z-50 p-0">
 			<AnimatePresence>
-				{showFastestLap && overallFastestLap && fastestdriver && (
-					<motion.div
-						key="fastestLap"
-						initial={{ opacity: 0, y: -20 }}
-						animate={{ opacity: 1, y: 0 }}
-						exit={{ opacity: 0, y: -20 }}
-						transition={{ duration: 0.5 }}
-						style={{
-							backgroundImage: `url('https://cdn.animaapp.com/projects/671282d572d2d77050fbb37d/releases/6712864285c7960cfebf0bbc/img/bg-1.svg')`,
-							backgroundSize: "cover",
-						}}
-						className="mb-2 rounded p-2 font-formula1 text-2xl"
-					>
-						Fastest Lap- <span style={{ color: `#${fastestdriver.teamColour}` }}>{fastestdriver.lastName}</span> -{" "}
-						{overallFastestLap.personalBestLapTime.value}
-					</motion.div>
-				)}
+				 {showFastestLap && overallFastestLap && fastestdriver && (
+                    <motion.div
+                        key="fastestLap"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5 }}
+                        style={{ backgroundImage: `url('https://cdn.animaapp.com/projects/671282d572d2d77050fbb37d/releases/6712864285c7960cfebf0bbc/img/bg-1.svg')`, backgroundSize: 'cover' }}
+
+                        className="font-formula1 text-2xl  p-2 mb-2 rounded"
+                    >
+                        Fastest Lap- <span style={{ color: `#${fastestdriver.teamColour}` }}>{fastestdriver.lastName}</span> - {overallFastestLap.personalBestLapTime.value}
+                    </motion.div>
+                )}
 				{displayedMessage && (
 					<motion.div
 						key="raceControl"

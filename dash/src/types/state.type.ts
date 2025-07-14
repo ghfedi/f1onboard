@@ -256,11 +256,11 @@ export type TimingData = {
  */
 export type TimingDataDriver = {
 	/** Statistics about time differences */
-	stats?: {
+	stats?: { 
 		/** Time difference to the fastest lap */
-		timeDiffToFastest: string;
+		timeDiffToFastest: string; 
 		/** Time difference to the position ahead */
-		timeDifftoPositionAhead: string;
+		timeDifftoPositionAhead: string 
 	}[];
 	/** Time difference to the fastest lap */
 	timeDiffToFastest?: string;
