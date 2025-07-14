@@ -59,6 +59,17 @@ F1-Onboard is a real-time Formula 1 dashboard application that provides telemetr
 - Ensure code quality through testing
 - Follow best practices for security
 
+## Deployment
+
+### Docker Deployment
+The application supports automated Docker deployment to Docker Hub using GitHub Actions. For detailed instructions on setting up and using the Docker deployment workflow, see [Docker Deployment Guide](docs/docker-deployment.md).
+
+Key features:
+- Automated building and pushing of Docker images to Docker Hub
+- Support for multiple environments (development, staging, production)
+- Production-ready Docker Compose configuration
+- Comprehensive tagging strategy for different branches and releases
+
 ## Constraints
 - Must handle high-frequency data updates
 - Should work with limited network bandwidth

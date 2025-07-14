@@ -66,17 +66,20 @@ export default function TeamRadioMessage({ driver, capture, basePath }: Props) {
 	};
 
 	return (
-		<motion.li animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: -20 }} className="flex flex-col gap-1" style={{background: `linear-gradient(to right, #${driver.teamColour}, transparent 90%) `}}>
-
-
+		<motion.li
+			animate={{ opacity: 1, y: 0 }}
+			initial={{ opacity: 0, y: -20 }}
+			className="flex flex-col gap-1"
+			style={{ background: `linear-gradient(to right, #${driver.teamColour}, transparent 90%) ` }}
+		>
 			<div
 				className="grid place-items-center items-center gap-1"
 				style={{
 					gridTemplateColumns: "2rem 20rem",
 				}}
 			>
-				<div className="w-10 place-self-start flex-col items-center justify-center">
-					<DriverTag short2={driver.tla} short={""} teamColor={""}/>
+				<div className="w-10 flex-col items-center justify-center place-self-start">
+					<DriverTag short2={driver.tla} short={""} teamColor={""} />
 					<div className="size-12 rounded-full">
 						<img
 							id="driver-headshot"
@@ -87,8 +90,8 @@ export default function TeamRadioMessage({ driver, capture, basePath }: Props) {
 				</div>
 
 				<div className="flex items-center gap-1">
-					<PlayControls playing={playing} onClick={togglePlayback}/>
-					<AudioProgress duration={duration} progress={progress}/>
+					<PlayControls playing={playing} onClick={togglePlayback} />
+					<AudioProgress duration={duration} progress={progress} />
 
 					<audio
 						preload="none"
