@@ -17,7 +17,7 @@ type Props<T> = {
 export default function SegmentedControls<T>({ id, className, options, selected, onSelect }: Props<T>) {
 	return (
 		<LayoutGroup>
-			<div id={id} className={clsx("m-0 inline-flex h-fit justify-between rounded-lg glass p-0.5", className)}>
+			<div id={id} className={clsx("glass m-0 inline-flex h-fit justify-between rounded-lg p-0.5", className)}>
 				{options.map((option, i) => {
 					const isActive = option.value === selected;
 					return (

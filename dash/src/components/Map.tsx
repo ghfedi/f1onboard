@@ -161,14 +161,7 @@ type Corner = {
 	labelPos: TrackPosition;
 };
 
-function Map({
-	circuitKey,
-	drivers,
-	timingDrivers,
-	trackStatus,
-	raceControlMessages,
-	positions,
-}: Props) {
+function Map({ circuitKey, drivers, timingDrivers, trackStatus, raceControlMessages, positions }: Props) {
 	const { uiElements } = useMode();
 
 	const [points, setPoints] = useState<null | { x: number; y: number }[]>(null);
@@ -432,7 +425,7 @@ const CarDot = ({ pos, name, color, pit, hidden, rotation, centerX, centerY }: C
 /**
  * Custom comparison function for React.memo
  * Performs a comparison of props to prevent unnecessary re-renders
- * 
+ *
  * @param prevProps - Previous component props
  * @param nextProps - Next component props
  * @returns True if the component should not re-render, false otherwise

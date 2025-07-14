@@ -22,7 +22,7 @@ const roadmap = [
 
 export default function Home() {
 	return (
-		<div className="relative container mx-auto max-w-screen-lg px-4">
+		<div className="container relative mx-auto max-w-screen-lg px-4">
 			<section className="flex h-screen w-full flex-col items-center pt-20 sm:justify-center sm:pt-0">
 				{/*<Image src={icon} alt="F1-Onboard tag logo" width={200} />*/}
 
@@ -46,7 +46,7 @@ export default function Home() {
 				<ScrollHint />
 			</section>
 
-			<section className=" gmb-10 flex w-full flex-col gap-2">
+			<section className="gmb-10 flex w-full flex-col gap-2">
 				<h2 className="mb-4 text-2xl">What are our Features?</h2>
 
 				<div className="grid grid-flow-row grid-cols-1 gap-2 sm:grid-cols-2">

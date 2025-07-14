@@ -5,8 +5,7 @@ import Image from "next/image";
 
 import githubIcon from "public/icons/github.svg";
 import coffeeIcon from "public/icons/bmc-logo.svg";
-import logo	from "public/icons/logo.png";
-
+import logo from "public/icons/logo.png";
 
 type Props = {
 	icon: "github" | "bmc" | "lgtm" | "logo";

@@ -95,7 +95,7 @@ const SubLayout = ({ children }: Props) => {
 	const syncing = maxDelay < delay;
 
 	return (
-		<div className="min-h-screen relative overflow-hidden">
+		<div className="relative flex h-screen w-full md:pt-2 md:pr-2 md:pb-2">
 			<style>{`
         :root {
           --glass-bg: rgba(255, 255, 255, 0.1);
@@ -130,46 +130,45 @@ background: linear-gradient(135deg,#030712, #030712);
    
       `}</style>
 			{/* Animated Background */}
-			<div className=" gradient-bg">
+			<div className="gradient-bg">
+				<div className="relative grid grid-cols-1 items-center gap-4 p-2 md:grid-cols-2">
+					<Menubar />
 
+					<div className="relative flex items-center gap-2 sm:hidden">
+						{/* <Timeline setTime={setTime} time={time} playing={delay.current > 0} maxDelay={maxDelay} /> */}
+						<DelayInput className="flex md:hidden" delay={delay} setDebouncedDelay={setDelayProxy} />
+						<PlayControls className="flex md:hidden" playing={playback} onClick={() => togglePlayback()} />
+						<StreamStatus live={delay == 0} />
+					</div>
 
-			<div className="grid grid-cols-1 relative items-center gap-4 p-2 md:grid-cols-2 ">
-				<Menubar />
-
-				<div className="flex relative items-center gap-2 sm:hidden">
-					{/* <Timeline setTime={setTime} time={time} playing={delay.current > 0} maxDelay={maxDelay} /> */}
-					<DelayInput className="flex md:hidden" delay={delay} setDebouncedDelay={setDelayProxy} />
-					<PlayControls className="flex md:hidden" playing={playback} onClick={() => togglePlayback()} />
-					<StreamStatus live={delay == 0} />
+					<div className="relative flex flex-row-reverse flex-wrap-reverse items-center gap-1">
+						<SegmentedControls
+							id="mode"
+							className="w-full md:w-auto"
+							selected={mode}
+							onSelect={setMode}
+							options={[
+								{ label: "Simple", value: "simple" },
+								{ label: "Advanced", value: "advanced" },
+								{ label: "Expert", value: "expert" },
+								{ label: "Custom", value: "custom" },
+							]}
+						/>
+						<DelayInput className="hidden md:flex" delay={delay} setDebouncedDelay={setDelayProxy} />
+						<PlayControls className="hidden md:flex" playing={playback} onClick={() => togglePlayback()} />
+					</div>
 				</div>
 
-				<div className="flex relative flex-row-reverse flex-wrap-reverse items-center gap-1">
-					<SegmentedControls
-						id="mode"
-						className="w-full md:w-auto"
-						selected={mode}
-						onSelect={setMode}
-						options={[
-							{ label: "Simple", value: "simple" },
-							{ label: "Advanced", value: "advanced" },
-							{ label: "Expert", value: "expert" },
-							{ label: "Custom", value: "custom" },
-						]}
-					/>
-					<DelayInput className="hidden md:flex" delay={delay} setDebouncedDelay={setDelayProxy} />
-					<PlayControls className="hidden md:flex" playing={playback} onClick={() => togglePlayback()} />
-				</div>
+				{syncing && (
+					<div className="flex w-full flex-col items-center justify-center">
+						<h1 className="my-20 text-center text-5xl font-bold">Syncing...</h1>
+						<p>Please wait for {delay - maxDelay} seconds.</p>
+						<p>Or make your delay smaller.</p>
+					</div>
+				)}
+
+				<div className={clsx("h-max w-full", syncing && "hidden")}>{children}</div>
 			</div>
-
-			{syncing && (
-				<div className="flex w-full flex-col items-center justify-center">
-					<h1 className="my-20 text-center text-5xl font-bold">Syncing...</h1>
-					<p>Please wait for {delay - maxDelay} seconds.</p>
-					<p>Or make your delay smaller.</p>
-				</div>
-			)}
-
-			<div className={clsx("h-max w-full", syncing && "hidden")}>{children}</div>
-		</div></div>
+		</div>
 	);
 };

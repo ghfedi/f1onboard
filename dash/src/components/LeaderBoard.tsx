@@ -23,7 +23,7 @@ function LeaderBoard({ drivers, driversTiming, driversTimingStats, driversAppTim
 	const { uiElements } = useMode();
 
 	return (
-		<div className=" overflow-hidden hover-lift">
+		<div className="hover-lift overflow-hidden">
 			{uiElements.tableHeaders && <TableHeaders />}
 
 			{(!drivers || !driversTiming) &&
@@ -55,9 +55,8 @@ function LeaderBoard({ drivers, driversTiming, driversTimingStats, driversAppTim
 
 const TableHeaders = () => {
 	return (
-		<div className="grid grid-cols-[auto_4px_1fr_auto_auto_auto_auto] gap-x-4 px-4 py-2 text-xs text-white/60 uppercase font-semibold border-b border-white/20 bg-white/5">
-
-		<p>Position</p>
+		<div className="grid grid-cols-[auto_4px_1fr_auto_auto_auto_auto] gap-x-4 border-b border-white/20 bg-white/5 px-4 py-2 text-xs font-semibold uppercase text-white/60">
+			<p>Position</p>
 			<p>DRS</p>
 			<p>Tire</p>
 			<p>Info</p>
@@ -72,9 +71,8 @@ const SkeletonDriver = () => {
 	const animateClass = "h-8 animate-pulse rounded-md";
 
 	return (
-		<div className="grid grid-cols-[auto_4px_1fr_auto_auto_auto_auto] items-center gap-x-4 px-4 py-3 border-b border-white/10 last:border-b-0 hover:bg-white/5 transition-colors duration-200">
-
-		<div className={animateClass} style={{ width: "100%" }} />
+		<div className="grid grid-cols-[auto_4px_1fr_auto_auto_auto_auto] items-center gap-x-4 border-b border-white/10 px-4 py-3 transition-colors duration-200 last:border-b-0 hover:bg-white/5">
+			<div className={animateClass} style={{ width: "100%" }} />
 
 			<div className={animateClass} style={{ width: "90%" }} />
 
@@ -114,7 +112,7 @@ const SkeletonDriver = () => {
 /**
  * Custom comparison function for React.memo
  * Performs a comparison of props to prevent unnecessary re-renders
- * 
+ *
  * @param prevProps - Previous component props
  * @param nextProps - Next component props
  * @returns True if the component should not re-render, false otherwise
