@@ -174,9 +174,9 @@ const arePropsEqual = (prevProps: Props, nextProps: Props): boolean => {
 	if (prevProps.driversAppTiming !== nextProps.driversAppTiming) return false;
 
 	// Compare cars data
-	if (prevProps.carsData !== nextProps.carsData) return false;
+	return prevProps.carsData === nextProps.carsData;
 
-	return true;
+
 };
 
 export default memo(LeaderBoard, arePropsEqual);
