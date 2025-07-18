@@ -15,6 +15,7 @@ import Map from "@/components/Map";
 import LapCount from "@/components/LapCount";
 import BattleMode from "@/components/BattleMode";
 import FastestLapOverlay from "@/components/FastestLapOverlay";
+import DriverComparison from "@/components/DriverComparison";
 import { DriverList, TimingData, TimingStats, TimingAppData, CarsData, Driver } from "@/types/state.type";
 
 export default function Page() {
@@ -139,6 +140,16 @@ export default function Page() {
 							</div>
 						</div>
 					</div>
+				</div>
+
+				{/* Driver Comparison Section */}
+				<div className="p-2">
+					<DriverComparison
+						availableDrivers={Object.values(state?.driverList || {})}
+						timingData={state?.timingData?.lines || {}}
+						timingStats={state?.timingStats?.lines || {}}
+						carData={carsData}
+					/>
 				</div>
 
 				<div className="md:hidden">
