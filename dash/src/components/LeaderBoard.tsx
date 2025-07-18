@@ -1,6 +1,7 @@
 import { AnimatePresence, LayoutGroup } from "framer-motion";
 import clsx from "clsx";
-import React, { memo } from "react";
+import React, { memo, useMemo } from "react";
+import { FixedSizeList as List } from "react-window";
 
 import { sortPos } from "@/lib/sorting/sortPos";
 import { objectEntries } from "@/lib/driverHelper";
@@ -22,6 +23,36 @@ type Props = {
 function LeaderBoard({ drivers, driversTiming, driversTimingStats, driversAppTiming, carsData }: Props) {
 	const { uiElements } = useMode();
 
+	// Memoize the sorted drivers list to avoid unnecessary recalculations
+	const sortedDrivers = useMemo(() => {
+		if (!drivers || !driversTiming) return [];
+		return objectEntries(driversTiming.lines).sort(sortPos);
+	}, [drivers, driversTiming]);
+
+	// Define the height of each driver row (adjust based on your actual row height)
+	const ITEM_HEIGHT = 80; // Approximate height in pixels
+	const MAX_VISIBLE_ITEMS = 10; // Maximum number of items to show before scrolling
+	const listHeight = Math.min(sortedDrivers.length * ITEM_HEIGHT, MAX_VISIBLE_ITEMS * ITEM_HEIGHT);
+
+	// Render function for each virtualized item
+	const renderDriverItem = ({ index, style }: { index: number; style: React.CSSProperties }) => {
+		const timingDriver = sortedDrivers[index];
+		return (
+			<div style={style}>
+				<Driver
+					key={`leaderBoard.driver.${timingDriver.racingNumber}`}
+					driver={drivers![timingDriver.racingNumber]}
+					timingDriver={timingDriver}
+					appTimingDriver={driversAppTiming?.lines[timingDriver.racingNumber]}
+					timingStatsDriver={driversTimingStats?.lines[timingDriver.racingNumber]}
+					position={index + 1}
+					sessionPart={driversTiming!.sessionPart}
+					carData={carsData ? carsData[timingDriver.racingNumber].Channels : undefined}
+				/>
+			</div>
+		);
+	};
+
 	return (
 		<div className="hover-lift overflow-hidden">
 			{uiElements.tableHeaders && <TableHeaders />}
@@ -30,11 +61,11 @@ function LeaderBoard({ drivers, driversTiming, driversTimingStats, driversAppTim
 				new Array(20).fill("").map((_, index) => <SkeletonDriver key={`driver.loading.${index}`} />)}
 
 			<LayoutGroup key="drivers">
-				{drivers && driversTiming && (
+				{drivers && driversTiming && sortedDrivers.length > 0 && (
 					<AnimatePresence>
-						{objectEntries(driversTiming.lines)
-							.sort(sortPos)
-							.map((timingDriver, index) => (
+						{sortedDrivers.length <= 20 ? (
+							// For small lists (≤20 items), render normally without virtualization
+							sortedDrivers.map((timingDriver, index) => (
 								<Driver
 									key={`leaderBoard.driver.${timingDriver.racingNumber}`}
 									driver={drivers[timingDriver.racingNumber]}
@@ -45,7 +76,19 @@ function LeaderBoard({ drivers, driversTiming, driversTimingStats, driversAppTim
 									sessionPart={driversTiming.sessionPart}
 									carData={carsData ? carsData[timingDriver.racingNumber].Channels : undefined}
 								/>
-							))}
+							))
+						) : (
+							// For large lists (>20 items), use virtualization
+							<List
+								height={listHeight}
+								itemCount={sortedDrivers.length}
+								itemSize={ITEM_HEIGHT}
+								width="100%"
+								className="virtualized-leaderboard"
+							>
+								{renderDriverItem}
+							</List>
+						)}
 					</AnimatePresence>
 				)}
 			</LayoutGroup>

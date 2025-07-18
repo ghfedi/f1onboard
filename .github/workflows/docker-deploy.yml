@@ -119,7 +119,7 @@ jobs:
               - 4000:4000
             environment:
               - LIVE_BACKEND_ADDRESS=0.0.0.0:4000
-              - ORIGIN=${{ secrets.ORIGIN }}
+              - ORIGIN=https://f1onboard.azurewebsites.net/
               - RUST_LOG=live=trace
 
           api:
