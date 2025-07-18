@@ -1,12 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
 	font-family: "Formula1-Bold";
 	src: url("../app/fonts/Formula1-Bold_web_0.ttf") format("truetype");
 	font-weight: bold;
 	font-style: normal;
 }
+
+/* Theme Variables */
+:root {
+	/* Light theme colors */
+	--background: 255 255 255;
+	--background-secondary: 248 250 252;
+	--foreground: 15 23 42;
+	--foreground-secondary: 71 85 105;
+	--border: 226 232 240;
+	--accent: 239 68 68;
+	--accent-hover: 220 38 38;
+	--muted: 241 245 249;
+	--muted-foreground: 100 116 139;
+}
+
+.dark {
+	/* Dark theme colors */
+	--background: 9 9 11;
+	--background-secondary: 24 24 27;
+	--foreground: 250 250 250;
+	--foreground-secondary: 161 161 170;
+	--border: 39 39 42;
+	--accent: 239 68 68;
+	--accent-hover: 220 38 38;
+	--muted: 39 39 42;
+	--muted-foreground: 113 113 122;
+}
+
+/* Smooth transitions for theme changes */
+* {
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 .pulse-loading-spinner {
 	animation: pulse-loading 1.2s cubic-bezier(0.52, 0.6, 0.25, 0.99) infinite;
 }

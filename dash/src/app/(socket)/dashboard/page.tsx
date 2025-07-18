@@ -148,7 +148,11 @@ export default function Page() {
 						availableDrivers={Object.values(state?.driverList || {})}
 						timingData={state?.timingData?.lines || {}}
 						timingStats={state?.timingStats?.lines || {}}
-						carData={carsData}
+						carData={
+							carsData ? Object.fromEntries(
+								Object.entries(carsData).map(([key, value]) => [key, value.Channels])
+							) : {}
+						}
 					/>
 				</div>
 

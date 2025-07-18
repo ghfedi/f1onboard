@@ -122,15 +122,12 @@ const SubLayout = ({ children }: Props) => {
           box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
         
-        .gradient-bg {
 
-background: linear-gradient(135deg,#030712, #030712);
-        }
         
    
       `}</style>
 			{/* Animated Background */}
-			<div className="gradient-bg">
+			<div>
 				<div className="relative grid grid-cols-1 items-center gap-4 p-2 md:grid-cols-2">
 					<Menubar />
 

@@ -27,7 +27,7 @@ export default function Modal({ children, open }: Props) {
 								initial={{ opacity: 0, scale: 0.9 }}
 								exit={{ opacity: 0, scale: 0.9 }}
 								animate={{ opacity: 1, scale: 1 }}
-								className="relative overflow-hidden rounded-xl bg-zinc-900 p-4 shadow-xl"
+								className="relative overflow-hidden rounded-xl bg-background border border-border p-4 shadow-xl text-foreground"
 							>
 								{children}
 							</motion.div>

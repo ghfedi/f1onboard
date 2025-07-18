@@ -8,9 +8,9 @@ import Image from "next/image";
 import Modal from "@/components/Modal";
 import Button from "@/components/Button";
 import Windows from "@/components/Windows";
+import ConnectionStatus from "./ConnectionStatus";
 
 import alertIcon from "public/icons/alert-triangle.svg";
-import ConnectionStatus from "./ConnectionStatus";
 
 export default function Menubar() {
 	const router = useRouter();

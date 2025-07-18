@@ -7,16 +7,23 @@ import { env } from "@/env.mjs";
 
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { FloatingThemeToggle } from "@/components/FloatingThemeToggle";
 
 export { metadata } from "@/metadata";
 export { viewport } from "@/viewport";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
-		<html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} bg-zinc-950 font-sans text-white`}>
+		<html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} font-sans`}>
 			<head />
 
-			<body>{children}</body>
+			<body className="bg-background text-foreground">
+				<ThemeProvider>
+					{children}
+					<FloatingThemeToggle />
+				</ThemeProvider>
+			</body>
 		</html>
 	);
 }

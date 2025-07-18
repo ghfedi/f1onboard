@@ -16,7 +16,7 @@ export default function Button({ children, onClick, className }: Props) {
 		<motion.button
 			whileHover={{ scale: 1.05 }}
 			whileTap={{ scale: 0.95 }}
-			className={clsx(className, "rounded-lg bg-zinc-800 p-2 text-center leading-none text-white")}
+			className={clsx(className, "rounded-lg bg-background-secondary hover:bg-muted border border-border p-2 text-center leading-none text-foreground transition-colors")}
 			onClick={onClick}
 		>
 			{children}
