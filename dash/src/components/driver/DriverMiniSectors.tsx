@@ -11,36 +11,60 @@ type Props = {
 };
 
 export default function DriverMiniSectors({ sectors = [], bestSectors, tla, showFastest }: Props) {
+	// Vérification de sécurité pour éviter l'erreur TypeError
+	if (!sectors || !Array.isArray(sectors)) {
+		return (
+			<div className="flex gap-2">
+				<div className="text-zinc-400 text-sm">No sector data</div>
+			</div>
+		);
+	}
+
 	return (
 		<div className="flex gap-2">
-			{sectors.map((sector, i) => (
-				<div key={`sector.${tla}.${i}`} className="flex flex-col gap-1">
-					<div className="flex flex-row gap-1">
-						{sector.segments.map((segment, j) => (
-							<MiniSector status={segment.status} key={`sector.mini.${tla}.${j}`} />
-						))}
-					</div>
+			{sectors.map((sector, i) => {
+				// Vérification de sécurité pour chaque secteur
+				if (!sector || !sector.segments || !Array.isArray(sector.segments)) {
+					return (
+						<div key={`sector.${tla}.${i}`} className="flex flex-col gap-1">
+							<div className="text-zinc-400 text-xs">--</div>
+						</div>
+					);
+				}
 
-					<div>
-						<p
-							className={clsx(
-								"text-lg font-semibold leading-none",
-								getTimeColor(sector.overallFastest, sector.personalFastest),
-								!sector.value ? "text-zinc-400" : "",
-								showFastest ? "!text-sm" : "",
-							)}
-						>
-							{!!sector.value ? sector.value : !!sector.previousValue ? sector.previousValue : "-- ---"}
-						</p>
+				return (
+					<div key={`sector.${tla}.${i}`} className="flex flex-col gap-1">
+						<div className="flex flex-row gap-1">
+							{sector.segments.map((segment, j) => {
+								// Vérification de sécurité pour chaque segment
+								const segmentStatus = segment?.status ?? 0;
+								return (
+									<MiniSector status={segmentStatus} key={`sector.mini.${tla}.${j}`} />
+								);
+							})}
+						</div>
 
-						{showFastest && (
-							<p className={clsx("text-sm font-semibold leading-none text-emerald-500")}>
-								{bestSectors && bestSectors[i].value ? bestSectors[i].value : "-- ---"}
+						<div>
+							<p
+								className={clsx(
+									"text-lg font-semibold leading-none",
+									getTimeColor(sector.overallFastest, sector.personalFastest),
+									!sector.value ? "text-zinc-400" : "",
+									showFastest ? "!text-sm" : "",
+								)}
+							>
+								{!!sector.value ? sector.value : !!sector.previousValue ? sector.previousValue : "-- ---"}
 							</p>
-						)}
+
+							{showFastest && (
+								<p className={clsx("text-sm font-semibold leading-none text-emerald-500")}>
+									{bestSectors && bestSectors[i]?.value ? bestSectors[i].value : "-- ---"}
+								</p>
+							)}
+						</div>
 					</div>
-				</div>
-			))}
+				);
+			})}
 		</div>
 	);
 }
